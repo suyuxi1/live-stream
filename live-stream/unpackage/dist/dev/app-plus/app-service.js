@@ -129,7 +129,95 @@ var render = function() {
                 ),
                 _i: "8-" + $30
               }
-            })
+            }),
+            _c(
+              "view",
+              {
+                staticClass: _vm._$s(
+                  "9-" + $30,
+                  "sc",
+                  "rounded-circle px-2 flex align-center"
+                ),
+                attrs: { _i: "9-" + $30 }
+              },
+              [
+                _c("text", {
+                  staticClass: _vm._$s(
+                    "10-" + $30,
+                    "sc",
+                    "iconfont iconbizhongguanli text-warning mr-1"
+                  ),
+                  attrs: { _i: "10-" + $30 }
+                }),
+                _c("text", {
+                  staticClass: _vm._$s("11-" + $30, "sc", "text-white font"),
+                  attrs: { _i: "11-" + $30 }
+                })
+              ]
+            ),
+            _c(
+              "view",
+              {
+                staticClass: _vm._$s(
+                  "12-" + $30,
+                  "sc",
+                  "rounded-circle px-2 flex align-center"
+                ),
+                attrs: { _i: "12-" + $30 }
+              },
+              [
+                _c("text", {
+                  staticClass: _vm._$s("13-" + $30, "sc", "font-sm text-white"),
+                  attrs: { _i: "13-" + $30 }
+                }),
+                _c("text", {
+                  staticClass: _vm._$s("14-" + $30, "sc", "text-white font-sm"),
+                  attrs: { _i: "14-" + $30 }
+                })
+              ]
+            ),
+            _c(
+              "view",
+              {
+                staticClass: _vm._$s(
+                  "15-" + $30,
+                  "sc",
+                  "rounded-circle flex align-center"
+                ),
+                attrs: { _i: "15-" + $30 }
+              },
+              [
+                _c("text", {
+                  staticClass: _vm._$s("16-" + $30, "sc", "font text-white"),
+                  attrs: { _i: "16-" + $30 }
+                })
+              ]
+            ),
+            _c(
+              "view",
+              {
+                staticClass: _vm._$s(
+                  "17-" + $30,
+                  "sc",
+                  "rounded-circle px-2 flex align-center"
+                ),
+                attrs: { _i: "17-" + $30 }
+              },
+              [
+                _c("text", {
+                  staticClass: _vm._$s(
+                    "18-" + $30,
+                    "sc",
+                    "rounded-circle bg-danger mr-1"
+                  ),
+                  attrs: { _i: "18-" + $30 }
+                }),
+                _c("text", {
+                  staticClass: _vm._$s("19-" + $30, "sc", "text-white font-sm"),
+                  attrs: { _i: "19-" + $30 }
+                })
+              ]
+            )
           ]
         )
       }),
@@ -193,7 +281,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _stu
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0; //\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n\n// import tab from '../../components/common/tab.vue';\nvar _default = {\n  // components: {\n  // \ttab\n  // },\n  data: function data() {\n    return {};\n  },\n  onLoad: function onLoad() {},\n  methods: {\n    openLive: function openLive() {} } };exports.default = _default;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vcGFnZXMvaW5kZXgvaW5kZXgudnVlIl0sIm5hbWVzIjpbImRhdGEiLCJvbkxvYWQiLCJtZXRob2RzIiwib3BlbkxpdmUiXSwibWFwcGluZ3MiOiJ3RkFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTtlQUNlO0FBQ2Q7QUFDQTtBQUNBO0FBQ0FBLE1BSmMsa0JBSVA7QUFDTixXQUFPLEVBQVA7QUFDQSxHQU5hO0FBT2RDLFFBUGMsb0JBT0wsQ0FBRSxDQVBHO0FBUWRDLFNBQU8sRUFBRTtBQUNSQyxZQURRLHNCQUNHLENBQUUsQ0FETCxFQVJLLEUiLCJmaWxlIjoiOS5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8vXG4vL1xuLy9cbi8vXG4vL1xuLy9cbi8vXG4vL1xuLy9cbi8vXG4vL1xuLy9cbi8vXG4vL1xuLy9cbi8vXG4vL1xuLy9cbi8vXG5cbi8vIGltcG9ydCB0YWIgZnJvbSAnLi4vLi4vY29tcG9uZW50cy9jb21tb24vdGFiLnZ1ZSc7XG5leHBvcnQgZGVmYXVsdCB7XG5cdC8vIGNvbXBvbmVudHM6IHtcblx0Ly8gXHR0YWJcblx0Ly8gfSxcblx0ZGF0YSgpIHtcblx0XHRyZXR1cm4ge307XG5cdH0sXG5cdG9uTG9hZCgpIHt9LFxuXHRtZXRob2RzOiB7XG5cdFx0b3BlbkxpdmUoKSB7fVxuXHR9XG59O1xuIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///9\n");
+eval("Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0; //\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n\n// import tab from '../../components/common/tab.vue';\nvar _default = {\n  // components: {\n  // \ttab\n  // },\n  data: function data() {\n    return {};\n  },\n  onLoad: function onLoad() {},\n  methods: {\n    openLive: function openLive() {} } };exports.default = _default;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vcGFnZXMvaW5kZXgvaW5kZXgudnVlIl0sIm5hbWVzIjpbImRhdGEiLCJvbkxvYWQiLCJtZXRob2RzIiwib3BlbkxpdmUiXSwibWFwcGluZ3MiOiJ3RkFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUE7ZUFDZTtBQUNkO0FBQ0E7QUFDQTtBQUNBQSxNQUpjLGtCQUlQO0FBQ04sV0FBTyxFQUFQO0FBQ0EsR0FOYTtBQU9kQyxRQVBjLG9CQU9MLENBQUUsQ0FQRztBQVFkQyxTQUFPLEVBQUU7QUFDUkMsWUFEUSxzQkFDRyxDQUFFLENBREwsRUFSSyxFIiwiZmlsZSI6IjkuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG5cclxuLy8gaW1wb3J0IHRhYiBmcm9tICcuLi8uLi9jb21wb25lbnRzL2NvbW1vbi90YWIudnVlJztcclxuZXhwb3J0IGRlZmF1bHQge1xyXG5cdC8vIGNvbXBvbmVudHM6IHtcclxuXHQvLyBcdHRhYlxyXG5cdC8vIH0sXHJcblx0ZGF0YSgpIHtcclxuXHRcdHJldHVybiB7fTtcclxuXHR9LFxyXG5cdG9uTG9hZCgpIHt9LFxyXG5cdG1ldGhvZHM6IHtcclxuXHRcdG9wZW5MaXZlKCkge31cclxuXHR9XHJcbn07XHJcbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///9\n");
 
 /***/ }),
 /* 10 */
