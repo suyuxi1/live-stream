@@ -9,43 +9,88 @@
 		</swiper>
 
 		<!-- 列表 -->
-		<view class="flex flex-wrap">
-			<view class="list-item p" v-for="i in 10" :key="i" @click="openLive">
-				<image src="../../static/index.png" mode="aspectFill" style="width: 365rpx; height: 365rpx;" class="rounded"></image>
-
-				<view class="rounded-circle px-2 flex align-center" style="position: absolute; left: 15rpx; top: 15rpx; background-color: rgba(0,0,0,0.4);">
-					<text class="iconfont iconbizhongguanli text-warning mr-1"></text>
-					<text class="text-white font">0</text>
-				</view>
-
-				<view class="rounded-circle px-2 flex align-center" style="position: absolute; right: 15rpx; top: 15rpx; background-color: rgba(0,0,0,0.4);">
-					<text class="font-sm text-white">人气：</text>
-					<text class="text-white font-sm">0</text>
-				</view>
-
-				<view class="rounded-circle flex align-center" style="position: absolute; left: 15rpx; bottom: 15rpx;"><text class="font text-white">标题</text></view>
-
-				<view class="rounded-circle px-2 flex align-center" style="position: absolute; right: 15rpx; bottom: 15rpx; background-color: rgba(0,0,0,0.4);">
-					<text class="rounded-circle bg-danger mr-1" style="width: 20rpx; height: 20rpx;"></text>
-					<text class="text-white font-sm">已结束</text>
-				</view>
-			</view>
-		</view>
+		<view class="flex flex-wrap"><list-item class="list-item p" v-for="(item, index) in list" :key="index" :item="item" @click="openLive(item)"></list-item></view>
 	</view>
 </template>
 
 <script>
 // import tab from '../../components/common/tab.vue';
+import listItem from '../../components/common/list-item.vue';
 export default {
-	// components: {
-	// 	tab
-	// },
+	components: {
+		listItem
+		// tab
+	},
 	data() {
-		return {};
+		return {
+			list: [
+				{
+					gold: 10,
+					likes: 620,
+					title: '直播间1',
+					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
+					link: 'http://ivi.bupt.edu.cn/hls/gdtv.m3u8'
+				},
+				{
+					gold: 10,
+					likes: 520,
+					title: '直播间2',
+					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
+					link: 'http://ivi.bupt.edu.cn/hls/gdtv.m3u8'
+				},
+				{
+					gold: 10,
+					likes: 520,
+					title: '直播间3',
+					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
+					link: 'http://ivi.bupt.edu.cn/hls/gdtv.m3u8'
+				},
+				{
+					gold: 10,
+					likes: 520,
+					title: '直播间4',
+					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
+					link: 'http://ivi.bupt.edu.cn/hls/gdtv.m3u8'
+				},
+				{
+					gold: 10,
+					likes: 520,
+					title: '直播间5',
+					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
+					link: 'http://ivi.bupt.edu.cn/hls/gdtv.m3u8'
+				},
+				{
+					gold: 10,
+					likes: 520,
+					title: '直播间6',
+					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
+					link: 'http://ivi.bupt.edu.cn/hls/gdtv.m3u8'
+				},
+				{
+					gold: 10,
+					likes: 520,
+					title: '直播间7',
+					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
+					link: 'http://ivi.bupt.edu.cn/hls/gdtv.m3u8'
+				},
+				{
+					gold: 10,
+					likes: 520,
+					title: '直播间8',
+					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
+					link: 'http://ivi.bupt.edu.cn/hls/gdtv.m3u8'
+				}
+			]
+		};
 	},
 	onLoad() {},
 	methods: {
-		openLive() {}
+		openLive(item) {
+			console.log('进入方法');
+			uni.navigateTo({
+				url: '../live/live?url=' + item.url
+			});
+		}
 	}
 };
 </script>
