@@ -94,8 +94,8 @@ export default {
 	onLoad() {},
 	methods: {
 		openLive(item) {
-			console.log('进入转播方法');
-			console.log(item.url);
+			// console.log('进入转播方法');
+			console.log('视频地址'+item.url);
 			uni.navigateTo({
 				url: '../live/live?url=' + item.url
 			});

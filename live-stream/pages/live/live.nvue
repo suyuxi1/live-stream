@@ -30,16 +30,21 @@
 				</view>
 			</view>
 			<!-- 金币 -->
-			<view class="px-2 my-2 bg-secondary" style="height: 80rpx"><text>金币</text></view>
+			<view class="px-2 my-1" style="height: 80rpx">
+				<view class="flex rounded-circle align-center" style="width: 325rpx; background-color: rgba(0,0,0,0.4);">
+					<view class="p"><text class="text-warning">金币</text></view>
+					<view class="flex-1 flex flex-column justify-center"><text class="text-white font">100</text></view>
+				</view>
+			</view>
 
 			<!-- 收到礼物 -->
-			<view class="bg-main" style="height: 210rpx"><text>礼物区</text></view>
+			<f-gift ref="gift"></f-gift>
 		</view>
 		<!-- 弹幕 -->
 		<view class="bg-main" style="position: fixed; bottom: 120rpx; left: 0; width: 750rpx; height: 330rpx;"><text>弹幕区</text></view>
 
 		<!-- 底部 -->
-		<view class="flex align-center justify-center fixed-bottom bg-danger" style="height: 120rpx"  @click="goback" >底部</view>
+		<view class="flex align-center justify-center fixed-bottom bg-danger" style="height: 120rpx" @click="goback">底部</view>
 	</view>
 
 	<!-- <view :style="'margin-top:' + statusBarHeight + 'px'">
@@ -56,10 +61,27 @@
 </template>
 
 <script>
+import fGift from '../../components/common/f-gift.vue';
 export default {
+	components: {
+		fGift
+	},
+	mounted() {
+		//送礼物演示
+		setInterval(() => {
+			this.$refs.gift.send({
+				username: '发送人',
+				avatar: '',
+				gift_name: '蛋糕',
+				gift_image: '../../static/gift/3.png',
+				num: 1
+			});
+		},3000);
+	},
 	data() {
 		return {
 			url: '',
+			content: '',
 			statusBarHeight: 0
 		};
 	},
@@ -83,6 +105,7 @@ export default {
 			uni.navigateBack({});
 		}
 	}
+	
 };
 </script>
 
