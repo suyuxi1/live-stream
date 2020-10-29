@@ -44,7 +44,17 @@
 		<view class="bg-main" style="position: fixed; bottom: 120rpx; left: 0; width: 750rpx; height: 330rpx;"><text>弹幕区</text></view>
 
 		<!-- 底部 -->
-		<view class="flex align-center justify-center fixed-bottom bg-danger" style="height: 120rpx" @click="goback">底部</view>
+		<view class="flex align-center justify-between fixed-bottom" style="height: 120rpx">
+			<view class="px-2">
+				<view class="btn  px-3"><text class="text-white font">说点什么...</text></view>
+			</view>
+			<view class="flex align-center">
+				<view class="btn btn-icon"><text class="iconfont text-white" style="font-size: 40rpx;">&#xe633;</text></view>
+				<view class="btn btn-icon bg-warning"><text class="iconfont">&#xe67c;</text></view>
+				<view class="btn btn-icon"><text class="iconfont text-white">&#xe7cd;</text></view>
+				<view class="btn btn-icon"><text class="iconfont text-white">&#xe607;</text></view>
+			</view>
+		</view>
 	</view>
 
 	<!-- <view :style="'margin-top:' + statusBarHeight + 'px'">
@@ -76,7 +86,7 @@ export default {
 				gift_image: '../../static/gift/3.png',
 				num: 1
 			});
-		},3000);
+		}, 3000);
 	},
 	data() {
 		return {
@@ -105,8 +115,19 @@ export default {
 			uni.navigateBack({});
 		}
 	}
-	
 };
 </script>
 
-<style></style>
+<style>
+.btn {
+	height: 80rpx;
+	border-radius: 100rpx;
+	background-color: rgba(255, 255, 255, 0.12);
+	align-items: center;
+	justify-content: center;
+}
+.btn-icon {
+	width: 80rpx;
+	margin-right: 20rpx;
+}
+</style>

@@ -2,9 +2,14 @@
 export default {
 	onLaunch: function() {
 		console.log('App Launch');
-		//监听底部导航中间凸起按钮
+		const domModule = weex.requireModule('dom');
+		domModule.addRule('fontFace', {
+			fontFamily: 'iconfont',
+			src: "url('http://at.alicdn.com/t/font_1859985_7mxozsfdvib.ttf')"
+		});
+		// 监听底部导航中间凸起按钮
 		uni.onTabBarMidButtonTap(() => {
-			console.log('点击中间按钮');
+			console.log('点击了中间按钮');
 		});
 	},
 	onShow: function() {
@@ -17,15 +22,9 @@ export default {
 </script>
 
 <style>
-/*每个页面公共css */
-/* 引用自定义的iconfont样式 */
+@import url('/common/free.css');
+@import url('/common/common.css');
 /* #ifndef APP-PLUS-NVUE */
-@import url('./common/icon.css');
+@import url('/common/icon.css');
 /* #endif */
-/* 动画库 */
-/* @import url("./common/animate.css"); */
-/* 自定义样式库 */
-@import url('./common/free.css');
-/* 全局样式 */
-@import url('./common/common.css');
 </style>
