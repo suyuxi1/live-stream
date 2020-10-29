@@ -26,59 +26,67 @@ export default {
 			list: [
 				{
 					gold: 10,
-					likes: 620,
-					title: '直播间1',
+					likes: 520,
+					title: 'CCTV-3',
 					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
-					link: 'http://ivi.bupt.edu.cn/hls/gdtv.m3u8'
+					url: 'http://ivi.bupt.edu.cn/hls/cctv3hd.m3u8',
+					state: 1
 				},
 				{
 					gold: 10,
-					likes: 520,
-					title: '直播间2',
+					likes: 530,
+					title: 'CCTV-6',
 					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
-					link: 'http://ivi.bupt.edu.cn/hls/gdtv.m3u8'
+					url: 'http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8',
+					state: 0
 				},
 				{
 					gold: 10,
-					likes: 520,
-					title: '直播间3',
+					likes: 540,
+					title: 'CCTV-10',
 					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
-					link: 'http://ivi.bupt.edu.cn/hls/gdtv.m3u8'
+					url: 'http://ivi.bupt.edu.cn/hls/cctv10hd.m3u8',
+					state: 1
 				},
 				{
 					gold: 10,
-					likes: 520,
-					title: '直播间4',
+					likes: 550,
+					title: '高清电影',
 					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
-					link: 'http://ivi.bupt.edu.cn/hls/gdtv.m3u8'
+					url: 'http://ivi.bupt.edu.cn/hls/chchd.m3u8',
+					state: 0
 				},
 				{
 					gold: 10,
-					likes: 520,
-					title: '直播间5',
+					likes: 560,
+					title: '湖南卫视',
 					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
-					link: 'http://ivi.bupt.edu.cn/hls/gdtv.m3u8'
+					url: 'http://ivi.bupt.edu.cn/hls/hunanhd.m3u8',
+					state: 1
 				},
 				{
 					gold: 10,
-					likes: 520,
-					title: '直播间6',
+					likes: 570,
+					title: '广东卫视',
 					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
-					link: 'http://ivi.bupt.edu.cn/hls/gdtv.m3u8'
+					url: 'http://ivi.bupt.edu.cn/hls/gdhd.m3u8',
+					state: 1
 				},
 				{
 					gold: 10,
-					likes: 520,
-					title: '直播间7',
+					likes: 580,
+					title: '金鹰纪实',
 					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
-					link: 'http://ivi.bupt.edu.cn/hls/gdtv.m3u8'
+					url: 'http://ivi.bupt.edu.cn/hls/gedocu.m3u8',
+					state: 0
 				},
 				{
 					gold: 10,
-					likes: 520,
-					title: '直播间8',
+					likes: 590,
+					title: '黑龙江',
 					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
-					link: 'http://ivi.bupt.edu.cn/hls/gdtv.m3u8'
+					url: 'http://ivi.bupt.edu.cn/hls/hljhd.m3u8',
+					state: 0
 				}
 			]
 		};
@@ -86,7 +94,8 @@ export default {
 	onLoad() {},
 	methods: {
 		openLive(item) {
-			console.log('进入方法');
+			console.log('进入转播方法');
+			console.log(item.url);
 			uni.navigateTo({
 				url: '../live/live?url=' + item.url
 			});

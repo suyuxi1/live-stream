@@ -498,13 +498,14 @@ var render = function() {
         [
           _c("v-uni-text", {
             staticClass: _vm._$g(11, "sc"),
+            class: _vm._$g(11, "c"),
             staticStyle: { width: "20rpx", height: "20rpx" },
             attrs: { _i: 11 }
           }),
           _c(
             "v-uni-text",
             { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
-            [_vm._v("已结束")]
+            [_vm._v(_vm._$g(12, "t0-0"))]
           )
         ],
         1

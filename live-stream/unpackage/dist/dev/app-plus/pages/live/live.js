@@ -1175,16 +1175,12 @@ var render = function() {
           "view",
           {
             staticStyle: { height: "400rpx" },
-            style: "margin-top" + _vm.statusBarHeight + "px"
+            style: "margin-top:" + _vm.statusBarHeight + "px"
           },
           [
             _c("u-video", {
               staticClass: ["flex-1"],
-              attrs: {
-                src: "http://ivi.bupt.edu.cn/hls/gdtv.m3u8",
-                autoplay: true,
-                controls: "false"
-              }
+              attrs: { src: _vm.url, autoplay: true, controls: "false" }
             })
           ],
           1
@@ -1234,7 +1230,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _stu
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0; //\n//\n//\n//\n//\n//\n//\n//\n//\nvar _default =\n{\n  data: function data() {\n    return {\n      // url: '',\n      statusBarHeight: 0 };\n\n  },\n  onLoad: function onLoad(e) {\n    // console.log('进入直播');\n    // console.log(e.url);\n    // //http://ivi.bupt.edu.cn/hls/gdtv.m3u8\n    // //非法地址处理\n    // if (!e.url) {\n    // \tuni.showToast({\n    // \t\ttitle: '非法参数',\n    // \t\ticon: 'none'\n    // \t});\n    // \treturn uni.navigateBack({});\n    // }\n    // this.url = e.url;\n    var res = uni.getSystemInfoSync();\n    this.statusBarHeight = res.statusBarHeight;\n  },\n  methods: {\n    goback: function goback() {\n      uni.navigateBack({});\n    } } };exports.default = _default;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vcGFnZXMvbGl2ZS9saXZlLm52dWUiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQVVBO0FBQ0EsTUFEQSxrQkFDQTtBQUNBO0FBQ0E7QUFDQSx3QkFGQTs7QUFJQSxHQU5BO0FBT0EsUUFQQSxrQkFPQSxDQVBBLEVBT0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsR0F0QkE7QUF1QkE7QUFDQSxVQURBLG9CQUNBO0FBQ0E7QUFDQSxLQUhBLEVBdkJBLEUiLCJmaWxlIjoiOC5qcyIsInNvdXJjZXNDb250ZW50IjpbIjx0ZW1wbGF0ZT5cclxuXHQ8dmlldz5cclxuXHRcdDx2aWV3IHN0eWxlPVwiaGVpZ2h0OiA0MDBycHg7XCIgOnN0eWxlPVwiJ21hcmdpbi10b3AnICsgc3RhdHVzQmFySGVpZ2h0ICsgJ3B4J1wiPlxyXG5cdFx0XHQ8dmlkZW8gc3JjPVwiaHR0cDovL2l2aS5idXB0LmVkdS5jbi9obHMvZ2R0di5tM3U4XCIgYXV0b3BsYXkgY29udHJvbHM9XCJmYWxzZVwiIGNsYXNzPVwiZmxleC0xXCI+PC92aWRlbz5cclxuXHRcdDwvdmlldz5cclxuXHRcdDx2aWV3IGNsYXNzPVwiYmctbGlnaHRcIiBzdHlsZT1cImhlaWdodDogMTAwMHJweDsgei1pbmRleDoyMFwiPjxidXR0b24gQHRhcD1cImdvYmFja1wiIGNsYXNzPVwiYmctbWFpbiBtdC0zXCI+6L+U5ZuePC9idXR0b24+PC92aWV3PlxyXG5cdDwvdmlldz5cclxuPC90ZW1wbGF0ZT5cclxuXHJcbjxzY3JpcHQ+XHJcbmV4cG9ydCBkZWZhdWx0IHtcclxuXHRkYXRhKCkge1xyXG5cdFx0cmV0dXJuIHtcclxuXHRcdFx0Ly8gdXJsOiAnJyxcclxuXHRcdFx0c3RhdHVzQmFySGVpZ2h0OiAwXHJcblx0XHR9O1xyXG5cdH0sXHJcblx0b25Mb2FkKGUpIHtcclxuXHRcdC8vIGNvbnNvbGUubG9nKCfov5vlhaXnm7Tmkq0nKTtcclxuXHRcdC8vIGNvbnNvbGUubG9nKGUudXJsKTtcclxuXHRcdC8vIC8vaHR0cDovL2l2aS5idXB0LmVkdS5jbi9obHMvZ2R0di5tM3U4XHJcblx0XHQvLyAvL+mdnuazleWcsOWdgOWkhOeQhlxyXG5cdFx0Ly8gaWYgKCFlLnVybCkge1xyXG5cdFx0Ly8gXHR1bmkuc2hvd1RvYXN0KHtcclxuXHRcdC8vIFx0XHR0aXRsZTogJ+mdnuazleWPguaVsCcsXHJcblx0XHQvLyBcdFx0aWNvbjogJ25vbmUnXHJcblx0XHQvLyBcdH0pO1xyXG5cdFx0Ly8gXHRyZXR1cm4gdW5pLm5hdmlnYXRlQmFjayh7fSk7XHJcblx0XHQvLyB9XHJcblx0XHQvLyB0aGlzLnVybCA9IGUudXJsO1xyXG5cdFx0bGV0IHJlcyA9IHVuaS5nZXRTeXN0ZW1JbmZvU3luYygpO1xyXG5cdFx0dGhpcy5zdGF0dXNCYXJIZWlnaHQgPSByZXMuc3RhdHVzQmFySGVpZ2h0O1xyXG5cdH0sXHJcblx0bWV0aG9kczoge1xyXG5cdFx0Z29iYWNrKCkge1xyXG5cdFx0XHR1bmkubmF2aWdhdGVCYWNrKHt9KTtcclxuXHRcdH1cclxuXHR9XHJcbn07XHJcbjwvc2NyaXB0PlxyXG5cclxuPHN0eWxlPjwvc3R5bGU+XG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///8\n");
+eval("/* WEBPACK VAR INJECTION */(function(__f__) {Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0; //\n//\n//\n//\n//\n//\n//\nvar _default =\n{\n  data: function data() {\n    return {\n      url: '',\n      statusBarHeight: 0 };\n\n  },\n  onLoad: function onLoad(e) {\n    var res = uni.getSystemInfoSync();\n    this.statusBarHeight = res.statusBarHeight;\n    __f__(\"log\", 'bar高度', \" at pages/live/live.nvue:19\");\n    __f__(\"log\", this.statusBarHeight, \" at pages/live/live.nvue:20\");\n    //非法地址处理\n    if (!e.url) {\n      uni.showToast({\n        title: '非法参数',\n        icon: 'none' });\n\n      return uni.navigateBack({});\n    }\n    this.url = e.url;\n  },\n  methods: {\n    goback: function goback() {\n      uni.navigateBack({});\n    } } };exports.default = _default;\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/lib/format-log.js */ 10)[\"default\"]))//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vcGFnZXMvbGl2ZS9saXZlLm52dWUiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7QUFRQTtBQUNBLE1BREEsa0JBQ0E7QUFDQTtBQUNBLGFBREE7QUFFQSx3QkFGQTs7QUFJQSxHQU5BO0FBT0EsUUFQQSxrQkFPQSxDQVBBLEVBT0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLHFCQURBO0FBRUEsb0JBRkE7O0FBSUE7QUFDQTtBQUNBO0FBQ0EsR0FyQkE7QUFzQkE7QUFDQSxVQURBLG9CQUNBO0FBQ0E7QUFDQSxLQUhBLEVBdEJBLEUiLCJmaWxlIjoiOC5qcyIsInNvdXJjZXNDb250ZW50IjpbIjx0ZW1wbGF0ZT5cclxuXHQ8dmlldz5cclxuXHRcdDx2aWV3IHN0eWxlPVwiaGVpZ2h0OiA0MDBycHg7XCIgOnN0eWxlPVwiJ21hcmdpbi10b3A6JyArIHN0YXR1c0JhckhlaWdodCArICdweCdcIj48dmlkZW8gOnNyYz1cInVybFwiIGF1dG9wbGF5IGNvbnRyb2xzPVwiZmFsc2VcIiBjbGFzcz1cImZsZXgtMVwiPjwvdmlkZW8+PC92aWV3PlxyXG5cdFx0PHZpZXcgY2xhc3M9XCJiZy1saWdodFwiIHN0eWxlPVwiaGVpZ2h0OiAxMDAwcnB4OyB6LWluZGV4OjIwXCI+PGJ1dHRvbiBAdGFwPVwiZ29iYWNrXCIgY2xhc3M9XCJiZy1tYWluIG10LTNcIj7ov5Tlm548L2J1dHRvbj48L3ZpZXc+XHJcblx0PC92aWV3PlxyXG48L3RlbXBsYXRlPlxyXG5cclxuPHNjcmlwdD5cclxuZXhwb3J0IGRlZmF1bHQge1xyXG5cdGRhdGEoKSB7XHJcblx0XHRyZXR1cm4ge1xyXG5cdFx0XHR1cmw6ICcnLFxyXG5cdFx0XHRzdGF0dXNCYXJIZWlnaHQ6IDBcclxuXHRcdH07XHJcblx0fSxcclxuXHRvbkxvYWQoZSkge1xyXG5cdFx0bGV0IHJlcyA9IHVuaS5nZXRTeXN0ZW1JbmZvU3luYygpO1xyXG5cdFx0dGhpcy5zdGF0dXNCYXJIZWlnaHQgPSByZXMuc3RhdHVzQmFySGVpZ2h0O1xyXG5cdFx0Y29uc29sZS5sb2coJ2JhcumrmOW6picpO1xyXG5cdFx0Y29uc29sZS5sb2codGhpcy5zdGF0dXNCYXJIZWlnaHQpO1xyXG5cdFx0Ly/pnZ7ms5XlnLDlnYDlpITnkIZcclxuXHRcdGlmICghZS51cmwpIHtcclxuXHRcdFx0dW5pLnNob3dUb2FzdCh7XHJcblx0XHRcdFx0dGl0bGU6ICfpnZ7ms5Xlj4LmlbAnLFxyXG5cdFx0XHRcdGljb246ICdub25lJ1xyXG5cdFx0XHR9KTtcclxuXHRcdFx0cmV0dXJuIHVuaS5uYXZpZ2F0ZUJhY2soe30pO1xyXG5cdFx0fVxyXG5cdFx0dGhpcy51cmwgPSBlLnVybDtcclxuXHR9LFxyXG5cdG1ldGhvZHM6IHtcclxuXHRcdGdvYmFjaygpIHtcclxuXHRcdFx0dW5pLm5hdmlnYXRlQmFjayh7fSk7XHJcblx0XHR9XHJcblx0fVxyXG59O1xyXG48L3NjcmlwdD5cclxuXHJcbjxzdHlsZT48L3N0eWxlPlxuIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///8\n");
 
 /***/ }),
 /* 9 */
@@ -1363,6 +1359,87 @@ function normalizeComponent (
   }
 }
 
+
+/***/ }),
+/* 10 */
+/*!*********************************************************************!*\
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/lib/format-log.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.log = log;exports.default = formatLog;function typof(v) {
+  var s = Object.prototype.toString.call(v);
+  return s.substring(8, s.length - 1);
+}
+
+function isDebugMode() {
+  /* eslint-disable no-undef */
+  return typeof __channelId__ === 'string' && __channelId__;
+}
+
+function log(type) {
+  for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    args[_key - 1] = arguments[_key];
+  }
+  console[type].apply(console, args);
+}
+
+function formatLog() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+  var type = args.shift();
+  if (isDebugMode()) {
+    args.push(args.pop().replace('at ', 'uni-app:///'));
+    return console[type].apply(console, args);
+  }
+
+  var msgs = args.map(function (v) {
+    var type = Object.prototype.toString.call(v).toLowerCase();
+
+    if (type === '[object object]' || type === '[object array]') {
+      try {
+        v = '---BEGIN:JSON---' + JSON.stringify(v) + '---END:JSON---';
+      } catch (e) {
+        v = '[object object]';
+      }
+    } else {
+      if (v === null) {
+        v = '---NULL---';
+      } else if (v === undefined) {
+        v = '---UNDEFINED---';
+      } else {
+        var vType = typof(v).toUpperCase();
+
+        if (vType === 'NUMBER' || vType === 'BOOLEAN') {
+          v = '---BEGIN:' + vType + '---' + v + '---END:' + vType + '---';
+        } else {
+          v = String(v);
+        }
+      }
+    }
+
+    return v;
+  });
+  var msg = '';
+
+  if (msgs.length > 1) {
+    var lastMsg = msgs.pop();
+    msg = msgs.join('---COMMA---');
+
+    if (lastMsg.indexOf(' at ') === 0) {
+      msg += lastMsg;
+    } else {
+      msg += '---COMMA---' + lastMsg;
+    }
+  } else {
+    msg = msgs[0];
+  }
+
+  console[type](msg);
+}
 
 /***/ })
 /******/ ]);

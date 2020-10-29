@@ -1,8 +1,6 @@
 <template>
 	<view>
-		<view style="height: 400rpx;" :style="'margin-top' + statusBarHeight + 'px'">
-			<video src="http://ivi.bupt.edu.cn/hls/gdtv.m3u8" autoplay controls="false" class="flex-1"></video>
-		</view>
+		<view style="height: 400rpx;" :style="'margin-top:' + statusBarHeight + 'px'"><video :src="url" autoplay controls="false" class="flex-1"></video></view>
 		<view class="bg-light" style="height: 1000rpx; z-index:20"><button @tap="goback" class="bg-main mt-3">返回</button></view>
 	</view>
 </template>
@@ -11,25 +9,24 @@
 export default {
 	data() {
 		return {
-			// url: '',
+			url: '',
 			statusBarHeight: 0
 		};
 	},
 	onLoad(e) {
-		// console.log('进入直播');
-		// console.log(e.url);
-		// //http://ivi.bupt.edu.cn/hls/gdtv.m3u8
-		// //非法地址处理
-		// if (!e.url) {
-		// 	uni.showToast({
-		// 		title: '非法参数',
-		// 		icon: 'none'
-		// 	});
-		// 	return uni.navigateBack({});
-		// }
-		// this.url = e.url;
 		let res = uni.getSystemInfoSync();
 		this.statusBarHeight = res.statusBarHeight;
+		console.log('bar高度');
+		console.log(this.statusBarHeight);
+		//非法地址处理
+		if (!e.url) {
+			uni.showToast({
+				title: '非法参数',
+				icon: 'none'
+			});
+			return uni.navigateBack({});
+		}
+		this.url = e.url;
 	},
 	methods: {
 		goback() {

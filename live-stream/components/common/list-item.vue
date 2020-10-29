@@ -17,8 +17,8 @@
 		</view>
 
 		<view class="rounded-circle px-2 flex align-center" style="position: absolute; right: 15rpx; bottom: 15rpx; background-color: rgba(0,0,0,0.4);">
-			<text class="rounded-circle bg-danger mr-1" style="width: 20rpx; height: 20rpx;"></text>
-			<text class="text-white font-sm">已结束</text>
+			<text class="rounded-circle  mr-1" style="width: 20rpx; height: 20rpx;" :class="item.state === 1 ? 'bg-success' : 'bg-danger'"></text>
+			<text class="text-white font-sm">{{ item.state === 1 ? '直播中' : '已结束' }}</text>
 		</view>
 	</view>
 </template>
