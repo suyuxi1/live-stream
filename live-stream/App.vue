@@ -19,7 +19,9 @@ export default {
 <style>
 /*每个页面公共css */
 /* 引用自定义的iconfont样式 */
+/* #ifndef APP-PLUS-NVUE */
 @import url('./common/icon.css');
+/* #endif */
 /* 动画库 */
 /* @import url("./common/animate.css"); */
 /* 自定义样式库 */
