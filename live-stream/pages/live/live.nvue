@@ -94,7 +94,7 @@
 					</swiper-item>
 				</swiper>
 				<view class="flex align-center justify-end" style="height: 100rpx;">
-					<view class="flex align-center justify-center py-2 px-2 mr-3 rounded bg-warning"><text class="font">充值</text></view>
+					<view class="flex align-center justify-center py-2 px-2 mr-3 rounded bg-warning" @click="openCoin"><text class="font">充值</text></view>
 					<view class="flex align-center justify-center py-2 px-2 mr-3 rounded bg-main" @click="sendGift"><text class="font text-white">发送</text></view>
 				</view>
 			</view>
@@ -118,7 +118,7 @@
 import fGift from '../../components/common/f-gift.vue';
 import fDanmu from '../../components/common/f-danmu.vue';
 import uniPopup from '../../components/uni-popup/uni-popup.vue';
-import myGifts from '../../common/gifts.js'
+import myGifts from '../../common/gifts.js';
 export default {
 	components: {
 		fGift,
@@ -130,8 +130,8 @@ export default {
 			url: '',
 			content: '',
 			statusBarHeight: 0,
-			gifts:[],
-			giftActiveId:0
+			gifts: [],
+			giftActiveId: 0
 		};
 	},
 	mounted() {
@@ -149,7 +149,7 @@ export default {
 	onLoad(e) {
 		let res = uni.getSystemInfoSync();
 		this.statusBarHeight = res.statusBarHeight;
-		this.gifts = myGifts
+		this.gifts = myGifts;
 		// console.log('bar高度');
 		// console.log(this.statusBarHeight);
 		//非法地址处理
@@ -163,6 +163,11 @@ export default {
 		this.url = e.url;
 	},
 	methods: {
+		openCoin() {
+			uni.navigateTo({
+				url: '../coin/coin'
+			});
+		},
 		openGift() {
 			this.$refs.giftPopup.open();
 		},
@@ -182,7 +187,7 @@ export default {
 			}
 			let g = this.gifts[index];
 			this.$refs.gift.send({
-				username: '小柒',
+				username: 'susu',
 				avatar: '',
 				gift_name: g.name,
 				gift_image: g.image,
