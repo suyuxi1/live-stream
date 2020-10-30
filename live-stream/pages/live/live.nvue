@@ -1,6 +1,7 @@
 <template>
 	<view class="flex-1">
-		<video :src="url" :controls="false" show-fullscreen-btn autoplay class="flex-1"></video>
+		
+		<video :src="url"  show-fullscreen-btn autoplay class="flex-1"></video>
 
 		<!-- 头部 -->
 		<view style="position: fixed; left: 0; right: 0;" :style="'top:' + statusBarHeight + 'px'">
@@ -36,16 +37,17 @@
 					<view class="flex-1 flex flex-column justify-center"><text class="text-white font">100</text></view>
 				</view>
 			</view>
-
 			<!-- 收到礼物 -->
 			<f-gift ref="gift"></f-gift>
 		</view>
+		
+		
 		<!-- 弹幕 -->
 		<f-danmu ref="danmu"></f-danmu>
 		<!-- <view class="bg-main" style="position: fixed; bottom: 120rpx; left: 0; width: 750rpx; height: 330rpx;"><text>弹幕区</text></view> -->
 
 		<!-- 底部 -->
-		<view class="flex align-center justify-between fixed-bottom" style="height: 120rpx">
+		<!-- <view class="flex align-center fixed-bottom" style="height: 120rpx">
 			<view class="px-2">
 				<view class="btn  px-3" @click="openInput"><text class="text-white font">说点什么...</text></view>
 			</view>
@@ -53,9 +55,9 @@
 				<view class="btn btn-icon"><text class="iconfont text-white" style="font-size: 40rpx;">&#xe633;</text></view>
 				<view class="btn btn-icon bg-warning" @click="openGift"><text class="iconfont text-light">&#xe67c;</text></view>
 				<view class="btn btn-icon"><text class="iconfont text-white">&#xe7cd;</text></view>
-				<view class="btn btn-icon"><text class="iconfont text-white">&#xe607;</text></view>
+				<view class="btn btn-icon"><text class="iconfont text-white" @click="goback">&#xe607;</text></view>
 			</view>
-		</view>
+		</view> -->
 		<!-- 输入框弹出 -->
 		<uni-popup type="bottom" ref="input">
 			<view class="bg-white flex align-center px-3" style="height: 120rpx;">
@@ -136,15 +138,15 @@ export default {
 	},
 	mounted() {
 		//送礼物演示
-		setInterval(() => {
-			this.$refs.gift.send({
-				username: '发送人',
-				avatar: '',
-				gift_name: '蛋糕',
-				gift_image: '../../static/gift/3.png',
-				num: 1
-			});
-		}, 3000);
+		// setInterval(() => {
+		// 	this.$refs.gift.send({
+		// 		username: '发送人',
+		// 		avatar: '',
+		// 		gift_name: '蛋糕',
+		// 		gift_image: '../../static/gift/3.png',
+		// 		num: 1
+		// 	});
+		// }, 3000);
 	},
 	onLoad(e) {
 		let res = uni.getSystemInfoSync();
