@@ -51,18 +51,51 @@
 			</view>
 			<view class="flex align-center">
 				<view class="btn btn-icon"><text class="iconfont text-white" style="font-size: 40rpx;">&#xe633;</text></view>
-				<view class="btn btn-icon bg-warning"><text class="iconfont">&#xe67c;</text></view>
+				<view class="btn btn-icon bg-warning" @click="openGift"><text class="iconfont text-light">&#xe67c;</text></view>
 				<view class="btn btn-icon"><text class="iconfont text-white">&#xe7cd;</text></view>
 				<view class="btn btn-icon"><text class="iconfont text-white">&#xe607;</text></view>
 			</view>
 		</view>
-
 		<!-- 输入框弹出 -->
 		<uni-popup type="bottom" ref="input">
 			<view class="bg-white flex align-center px-3" style="height: 120rpx;">
 				<input type="text" value="" v-model="content" class="border rounded flex-1 px-3 font-md" placeholder="说点什么..." style="height: 80rpx;" />
 				<view class="flex align-center justify-center py-2 px-2 ml-3 rounded" @click="submit" :class="content === '' ? 'bg-main-disabled' : 'bg-main'">
 					<text class="font text-white">发送</text>
+				</view>
+			</view>
+		</uni-popup>
+
+		<!-- 送礼物弹出层 -->
+		<uni-popup type="bottom" ref="giftPopup">
+			<view class="bg-white" style="width: 750rpx; height: 550rpx;">
+				<view class="flex justify-between align-center" style="height: 100rpx;">
+					<text class="text-main font-md ml-3">礼物</text>
+					<view class="flex align-center justify-center" style="width: 100rpx; height: 100rpx;" @click="closeGift"><text class="iconfont">&#xe607;</text></view>
+				</view>
+				<swiper :indicator-dots="true" :duration="500" style="height: 350rpx;" class="border-bottom border-top">
+					<swiper-item>
+						<view class="flex flex-wrap">
+							<view
+								class="flex flex-column justify-center align-center"
+								style="width: 187rpx; height: 175rpx;"
+								v-for="(item, index) in gifts"
+								:key="index"
+								:class="giftActiveId === item.id ? 'border boder-main' : ''"
+								@click="giftActiveId = item.id"
+							>
+								<image :src="item.image" mode="" style="width: 100rpx; height: 100rpx;"></image>
+								<view class="flex mt-1">
+									<text class="text-warning font mr-1">{{ item.name }}</text>
+									<text class="text-secondary font">{{ item.icon }}</text>
+								</view>
+							</view>
+						</view>
+					</swiper-item>
+				</swiper>
+				<view class="flex align-center justify-end" style="height: 100rpx;">
+					<view class="flex align-center justify-center py-2 px-2 mr-3 rounded bg-warning"><text class="font">充值</text></view>
+					<view class="flex align-center justify-center py-2 px-2 mr-3 rounded bg-main" @click="sendGift"><text class="font text-white">发送</text></view>
 				</view>
 			</view>
 		</uni-popup>
@@ -85,11 +118,21 @@
 import fGift from '../../components/common/f-gift.vue';
 import fDanmu from '../../components/common/f-danmu.vue';
 import uniPopup from '../../components/uni-popup/uni-popup.vue';
+import myGifts from '../../common/gifts.js'
 export default {
 	components: {
 		fGift,
 		fDanmu,
 		uniPopup
+	},
+	data() {
+		return {
+			url: '',
+			content: '',
+			statusBarHeight: 0,
+			gifts:[],
+			giftActiveId:0
+		};
 	},
 	mounted() {
 		//送礼物演示
@@ -103,16 +146,10 @@ export default {
 			});
 		}, 3000);
 	},
-	data() {
-		return {
-			url: '',
-			content: '',
-			statusBarHeight: 0
-		};
-	},
 	onLoad(e) {
 		let res = uni.getSystemInfoSync();
 		this.statusBarHeight = res.statusBarHeight;
+		this.gifts = myGifts
 		// console.log('bar高度');
 		// console.log(this.statusBarHeight);
 		//非法地址处理
@@ -126,6 +163,33 @@ export default {
 		this.url = e.url;
 	},
 	methods: {
+		openGift() {
+			this.$refs.giftPopup.open();
+		},
+		closeGift() {
+			this.$refs.giftPopup.close();
+		},
+		sendGift() {
+			if (this.giftActiveId === 0) {
+				return uni.showToast({
+					title: '请选择要发送的礼物',
+					icon: 'none'
+				});
+			}
+			let index = this.gifts.findIndex(item => item.id === this.giftActiveId);
+			if (index === -1) {
+				return;
+			}
+			let g = this.gifts[index];
+			this.$refs.gift.send({
+				username: '小柒',
+				avatar: '',
+				gift_name: g.name,
+				gift_image: g.image,
+				num: 10
+			});
+			this.closeGift();
+		},
 		//返回上一层页面
 		goback() {
 			uni.navigateBack({});

@@ -18,16 +18,16 @@
 			}
 		},
 		mounted() {
-			// let id = 1
-			// setInterval(()=>{
-			// 	this.list.push({
-			// 		id:id,
-			// 		name:'观众'+id,
-			// 		content:'发言_'+id
-			// 	})
-			// 	this.toBottom()
-			// 	id++
-			// },2000)
+			let id = 1
+			setInterval(()=>{
+				this.list.push({
+					id:id,
+					name:'观众'+id,
+					content:'发言_'+id
+				})
+				this.toBottom()
+				id++
+			},2000)
 		},
 		methods:{
 			//发送弹幕
