@@ -28,7 +28,7 @@ export default {
 					gold: 10,
 					likes: 520,
 					title: 'CCTV-3',
-					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
+					cover: 'http://pic.netbian.com/uploads/allimg/190824/205524-15666513248366.jpg',
 					url: 'http://ivi.bupt.edu.cn/hls/cctv3hd.m3u8',
 					state: 1
 				},
@@ -36,7 +36,7 @@ export default {
 					gold: 10,
 					likes: 530,
 					title: 'CCTV-6',
-					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
+					cover: 'http://pic.netbian.com/uploads/allimg/200604/001849-15912011292fcb.jpg',
 					url: 'http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8',
 					state: 0
 				},
@@ -44,7 +44,7 @@ export default {
 					gold: 10,
 					likes: 540,
 					title: 'CCTV-10',
-					cover: 'http://b40.photo.store.qq.com/psb?/V146ck4w2VCSVT/m.TVJDKX64V7xGxmkf0LEmO8U8FZ.lc6mRYPTYD6zo8!/b/dCgAAAAAAAAA&bo=AASAAgAAAAAFB6I!&rf=viewer_4',
+					cover: 'http://pic.netbian.com/uploads/allimg/190909/192110-1568028070e5ea.jpg',
 					url: 'http://ivi.bupt.edu.cn/hls/cctv10hd.m3u8',
 					state: 1
 				},
@@ -95,7 +95,7 @@ export default {
 	methods: {
 		openLive(item) {
 			// console.log('进入转播方法');
-			console.log('视频地址'+item.url);
+			console.log('视频地址' + item.url);
 			uni.navigateTo({
 				url: '../live/live?url=' + item.url
 			});

@@ -18,6 +18,7 @@
 		<f-list-item icon="iconzhengzaizhibo" title="我的直播"><text class="text-muted font">0</text></f-list-item>
 		<f-list-item icon="iconfaxian" title="我的关注"><text class="text-muted font">0</text></f-list-item>
 		<f-list-item icon="iconmore" title="历史记录"></f-list-item>
+		<view @click="toShare"><f-list-item icon="iconfenxiang" title="分享列表"></f-list-item></view>
 	</view>
 </template>
 
@@ -36,7 +37,13 @@ export default {
 		let res = uni.getSystemInfoSync();
 		this.statusBarHeight = res.statusBarHeight;
 	},
-	methods: {}
+	methods: {
+		toShare() {
+			uni.navigateTo({
+				url: '../share/share'
+			});
+		}
+	}
 };
 </script>
 

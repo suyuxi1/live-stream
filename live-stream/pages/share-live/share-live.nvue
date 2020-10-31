@@ -1,0 +1,45 @@
+<template>
+<view class="flex-1">
+		
+		<video :src="url" :controls="true" show-fullscreen-btn autoplay class="flex-1"></video>
+
+		<!-- 头部 -->
+		<view style="position: fixed; left: 0; right: 0;" :style="'top:' + statusBarHeight + 'px'">
+		</view>
+		
+	</view>
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			url: '',
+			statusBarHeight: 0
+		};
+	},
+	onLoad(e) {
+		let res = uni.getSystemInfoSync();
+		this.statusBarHeight = res.statusBarHeight;
+		// console.log('bar高度');
+		// console.log(this.statusBarHeight);
+		//非法地址处理
+		if (!e.url) {
+			uni.showToast({
+				title: '非法参数',
+				icon: 'none'
+			});
+			return uni.navigateBack({});
+		}
+		this.url = e.url;
+	},
+	methods: {
+		//返回上一层页面
+		goback() {
+			uni.navigateBack({});
+		}
+	}
+};
+</script>
+
+<style></style>
