@@ -33,7 +33,7 @@
 			</view>
 
 			<view class="position-absolute right-0 flex flex-column" style="width: 100rpx;">
-				<view class="flex flex-column align-center justify-center" style="height: 120rpx; width: 100rpx;">
+				<view class="flex flex-column align-center justify-center" style="height: 120rpx; width: 100rpx;" @click="switchCamera">
 					<text class="iconfont text-white mb-1">&#xe605;</text>
 					<text class="text-white font">翻转</text>
 				</view>
@@ -80,6 +80,14 @@ export default {
 		this.shartPreview();
 	},
 	methods: {
+		//镜头翻转
+		switchCamera() {
+			this.context.switchCamera({
+				success: e => {
+					this.position = this.position === 'back' ? 'front' : 'back';
+				}
+			});
+		},
 		//开启预览
 		shartPreview() {
 			this.context.startPreview({
