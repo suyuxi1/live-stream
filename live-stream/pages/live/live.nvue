@@ -1,7 +1,6 @@
 <template>
 	<view class="flex-1">
-		
-		<video :src="url"  show-fullscreen-btn autoplay class="flex-1"></video>
+		<video :src="url" :controls="true" show-fullscreen-btn autoplay class="flex-1"></video>
 
 		<!-- 头部 -->
 		<view style="position: fixed; left: 0; right: 0;" :style="'top:' + statusBarHeight + 'px'">
@@ -40,14 +39,13 @@
 			<!-- 收到礼物 -->
 			<f-gift ref="gift"></f-gift>
 		</view>
-		
-		
+
 		<!-- 弹幕 -->
 		<f-danmu ref="danmu"></f-danmu>
 		<!-- <view class="bg-main" style="position: fixed; bottom: 120rpx; left: 0; width: 750rpx; height: 330rpx;"><text>弹幕区</text></view> -->
 
 		<!-- 底部 -->
-		<!-- <view class="flex align-center fixed-bottom" style="height: 120rpx">
+		<view class="flex align-center justify-between fixed-bottom" style="height: 120rpx">
 			<view class="px-2">
 				<view class="btn  px-3" @click="openInput"><text class="text-white font">说点什么...</text></view>
 			</view>
@@ -57,7 +55,8 @@
 				<view class="btn btn-icon"><text class="iconfont text-white">&#xe7cd;</text></view>
 				<view class="btn btn-icon"><text class="iconfont text-white" @click="goback">&#xe607;</text></view>
 			</view>
-		</view> -->
+		</view>
+		
 		<!-- 输入框弹出 -->
 		<uni-popup type="bottom" ref="input">
 			<view class="bg-white flex align-center px-3" style="height: 120rpx;">
@@ -101,6 +100,8 @@
 				</view>
 			</view>
 		</uni-popup>
+		
+		
 	</view>
 
 	<!-- <view :style="'margin-top:' + statusBarHeight + 'px'">
