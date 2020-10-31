@@ -1,6 +1,6 @@
 <template>
 	<view class="flex-1">
-		<video :src="url" :controls="true" show-fullscreen-btn autoplay class="flex-1"></video>
+		<video :src="url" :controls="false" show-fullscreen-btn autoplay class="flex-1"></video>
 
 		<!-- 头部 -->
 		<view style="position: fixed; left: 0; right: 0;" :style="'top:' + statusBarHeight + 'px'">
