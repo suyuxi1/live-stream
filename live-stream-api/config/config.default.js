@@ -103,7 +103,7 @@ module.exports = (appInfo) => {
   }
 
   config.auth = {
-    match: ['/logout'],
+    match: ['/api/live/create'],
   }
 
   return {
