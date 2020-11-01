@@ -25,10 +25,13 @@ module.exports = (appInfo) => {
   config.security = {
     // 关闭 csrf
     csrf: {
-      enable: false,
+      headerName: 'x-csrf-token',
+      ignore: (ctx) => {
+        return ctx.request.url.startsWith('/api')
+      },
     },
     // 跨域白名单
-    domainWhiteList: ['http://localhost:3000'],
+    // domainWhiteList: ['http://localhost:3000'],
   }
   // 允许跨域的方法
   config.cors = {
@@ -66,6 +69,10 @@ module.exports = (appInfo) => {
   config.crypto = {
     secret: 'qhdgw@45ncashdaksh2!#@3nxjdas*_672',
   }
+  //jwt配置
+  config.jwt = {
+    secret: 'qhdgw@45ncashdaksh2!#@3nxjdas*_672',
+  }
   // redis存储
   config.redis = {
     client: {
@@ -75,12 +82,9 @@ module.exports = (appInfo) => {
       db: 1,
     },
   }
-  //jwt配置
-  config.jwt = {
-    secret: 'qhdgw@45ncashdaksh2!#@3nxjdas*_672',
-  }
-  config.auth ={
-    match: ['/logout']
+
+  config.auth = {
+    match: ['/logout'],
   }
 
   return {
