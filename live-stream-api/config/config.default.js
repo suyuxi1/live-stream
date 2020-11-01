@@ -74,7 +74,11 @@ module.exports = (appInfo) => {
       password: '',
       db: 1,
     },
-  };
+  }
+  //jwt配置
+  config.jwt = {
+    secret: 'qhdgw@45ncashdaksh2!#@3nxjdas*_672',
+  }
 
   return {
     ...config,
