@@ -82,6 +82,25 @@ module.exports = (appInfo) => {
       db: 1,
     },
   }
+  //流媒体配置
+  config.mediaServer = {
+    rtmp: {
+      port: 23480,
+      chunk_size: 6000,
+      gop_cache: true,
+      ping: 30,
+      ping_timeout: 60,
+    },
+    http: {
+      port: 23481,
+      allow_origin: '*',
+    },
+    auth: {
+      play: true,
+      publish: true,
+      secret: 'qhdgw@45ncashdaksh2!#@3nxjdas*_672y',
+    },
+  }
 
   config.auth = {
     match: ['/logout'],

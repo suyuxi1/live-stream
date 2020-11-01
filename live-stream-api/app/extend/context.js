@@ -1,5 +1,6 @@
 'use strict'
 
+const crypto = require('crypto')
 module.exports = {
   // 成功提示
   apiSuccess(data = '', msg = 'ok', code = 200) {
