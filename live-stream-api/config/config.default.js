@@ -58,6 +58,10 @@ module.exports = (appInfo) => {
       underscored: true,
     },
   }
+  config.valparams = {
+    local: 'zh-cn',
+    throwError: true,
+  }
 
   return {
     ...config,

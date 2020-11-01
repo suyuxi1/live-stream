@@ -24,6 +24,19 @@ module.exports = (option, app) => {
         msg: 'fail',
         data: error,
       }
+
+       // 参数验证异常
+       if (status === 422 && err.message === 'Validation Failed') {
+        if (err.errors && Array.isArray(err.errors)) {
+          error = err.errors[0].err[0]
+            ? err.errors[0].err[0]
+            : err.errors[0].err[1];
+        }
+        ctx.body = {
+          msg: 'fail',
+          data: error,
+        };
+      }
       ctx.status = status
     }
   }
