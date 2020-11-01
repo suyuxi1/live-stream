@@ -16,7 +16,7 @@ module.exports = (appInfo) => {
   config.keys = appInfo.name + '_1604209629130_7009'
 
   // add your middleware config here
-  config.middleware = ['errorHandler']
+  config.middleware = ['errorHandler', 'auth']
 
   // add your user config here
   const userConfig = {
@@ -78,6 +78,9 @@ module.exports = (appInfo) => {
   //jwt配置
   config.jwt = {
     secret: 'qhdgw@45ncashdaksh2!#@3nxjdas*_672',
+  }
+  config.auth ={
+    match: ['/logout']
   }
 
   return {
