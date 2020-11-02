@@ -1,6 +1,7 @@
 <script>
 export default {
 	onLaunch: function() {
+		console.log(this.$store.state.test);
 		console.log('App Launch');
 		const domModule = weex.requireModule('dom');
 		domModule.addRule('fontFace', {
