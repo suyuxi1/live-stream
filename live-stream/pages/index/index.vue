@@ -29,7 +29,8 @@ export default {
 					likes: 520,
 					title: 'CCTV-3',
 					cover: 'http://pic.netbian.com/uploads/allimg/190824/205524-15666513248366.jpg',
-					url: 'http://ivi.bupt.edu.cn/hls/cctv3hd.m3u8',
+					url: 'http://suyuxi.utools.club/live/MSuSfJ0Q60fnqfwFKp9m.flv?sign=1604332766-32385776ba7ef343d6ab97b3c50dad43',
+					// url: 'http://ivi.bupt.edu.cn/hls/cctv3hd.m3u8',
 					state: 1
 				},
 				{

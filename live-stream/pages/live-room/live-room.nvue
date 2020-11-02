@@ -45,6 +45,7 @@
 					</view>
 				</view>
 			</view>
+			
 			<!-- 金币 -->
 			<view style="height: 80rpx;" class="px-2 my-2">
 				<view style="width: 325rpx;background-color: rgba(0,0,0,0.4);" class="flex rounded-circle align-center">

@@ -5,12 +5,32 @@
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
+const NodeMediaServer = require('node-media-server')
 module.exports = (appInfo) => {
   /**
    * built-in config
    * @type {Egg.EggAppConfig}
    **/
-  const config = (exports = {})
+  // const config = (exports = {})
+  // 流媒体配置
+  const config = {
+    rtmp: {
+      port: 23480,
+      chunk_size: 60000,
+      gop_cache: true,
+      ping: 30,
+      ping_timeout: 60,
+    },
+    http: {
+      port: 23481,
+      allow_origin: '*',
+    },
+    auth: {
+      play: true,
+      publish: true,
+      secret: 'nodemedia2017privatekey',
+    },
+  }
 
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1604209629130_7009'
@@ -82,28 +102,30 @@ module.exports = (appInfo) => {
       db: 1,
     },
   }
-  //流媒体配置
-  config.mediaServer = {
-    rtmp: {
-      port: 23480,
-      chunk_size: 6000,
-      gop_cache: true,
-      ping: 30,
-      ping_timeout: 60,
-    },
-    http: {
-      port: 23481,
-      allow_origin: '*',
-    },
-    auth: {
-      play: true,
-      publish: true,
-      secret: 'qhdgw@45ncashdaksh2!#@3nxjdas*_672y',
-    },
-  }
+  // 流媒体配置
+  // config.mediaServer = {
+  //   rtmp: {
+  //     port: 23480,
+  //     chunk_size: 60000,
+  //     gop_cache: true,
+  //     ping: 30,
+  //     ping_timeout: 60,
+  //   },
+  //   http: {
+  //     port: 23481,
+  //     allow_origin: '*',
+  //   },
+  //   auth: {
+  //     play: true,
+  //     publish: true,
+  //     // secret: 'nodemedia2017privatekey',
+  //   },
+  // }
+  var nms = new NodeMediaServer(config)
+  nms.run()
 
   config.auth = {
-    match: ['/api/live/create'],
+    match: ['/api/live/create', '/api/logout'],
   }
 
   return {
