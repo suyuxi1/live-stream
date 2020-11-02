@@ -97,7 +97,8 @@ module.exports = (appInfo) => {
   config.redis = {
     client: {
       port: 6379, // Redis port
-      host: '127.0.0.1', // Redis host
+      host: '120.25.149.156', 
+      // host: '127.0.0.1', // Redis host
       password: '',
       db: 1,
     },
@@ -121,7 +122,7 @@ module.exports = (appInfo) => {
       secret: 'nodemedia2017privatekey',
     },
   }
-  var nms = new NodeMediaServer(config)
+  var nms = new NodeMediaServer(config.mediaServer)
   nms.run()
 
   config.auth = {
