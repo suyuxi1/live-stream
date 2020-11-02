@@ -19,6 +19,7 @@
 		<f-list-item icon="iconfaxian" title="我的关注"><text class="text-muted font">0</text></f-list-item>
 		<f-list-item icon="iconmore" title="历史记录"></f-list-item>
 		<view @click="toShare"><f-list-item icon="iconfenxiang" title="分享列表"></f-list-item></view>
+		<view @click="toLogin"><f-list-item icon="iconwode" title="我的登录"></f-list-item></view>
 	</view>
 </template>
 
@@ -41,6 +42,11 @@ export default {
 		toShare() {
 			uni.navigateTo({
 				url: '../share/share'
+			});
+		},
+		toLogin() {
+			uni.navigateTo({
+				url: '../login/login'
 			});
 		}
 	}
