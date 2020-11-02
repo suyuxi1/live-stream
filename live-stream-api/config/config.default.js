@@ -125,7 +125,7 @@ module.exports = (appInfo) => {
   nms.run()
 
   config.auth = {
-    match: ['/api/live/create', '/api/logout'],
+    match: ['/api/live/create', '/api/logout','/api/user/info'],
   }
 
   return {
