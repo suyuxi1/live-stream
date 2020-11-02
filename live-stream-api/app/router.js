@@ -13,10 +13,13 @@ module.exports = (app) => {
   router.post('/api/login', controller.api.user.login)
   // 用户退出登录
   router.post('/api/logout', controller.api.user.logout)
-  // 创建直播间
-  router.post('/api/live/create', controller.api.live.save)
   // 获取当前用户信息
   router.get('/api/user/info', controller.api.user.info)
+
+  // 创建直播间
+  router.post('/api/live/create', controller.api.live.save)
   //修改直播间状态
   router.post('/api/live/changestatus', controller.api.live.changeStatus)
+  // 直播间列表
+  router.get('/api/live/list/:page', controller.api.live.list)
 }
