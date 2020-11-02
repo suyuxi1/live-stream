@@ -48,8 +48,8 @@ export default {
 		return {
 			type: 'login',
 			from: {
-				username: '',
-				password: '',
+				username: 'sususu',
+				password: '123456',
 				repassword: ''
 			}
 		};
@@ -59,8 +59,25 @@ export default {
 			this.type = this.type === 'login' ? 'reg' : 'login';
 		},
 		submit() {
-			uni.switchTab({
-				url: '../index/index'
+			let msg = this.type === 'login' ? '登录' : '注册';
+			this.$H.post('/' + this.type,this.from).then(res => {
+				uni.showToast({
+					title: msg + '成功',
+					icon: 'none'
+				});
+				if (this.type === 'reg') {
+					this.changeType();
+					this.form = {
+						username: '',
+						password: '',
+						repassword: ''
+					};
+				} else {
+					this.$store.dispatch('login', res);
+					uni.navigateBack({
+						delta: 1
+					});
+				}
 			});
 		}
 	}
