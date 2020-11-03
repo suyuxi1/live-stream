@@ -83,7 +83,8 @@
             "path" : "pages/user-set/user-set",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "设置",
+				"navigationBarBackgroundColor":"#8745FF",
                 "enablePullDownRefresh": false
             }
             

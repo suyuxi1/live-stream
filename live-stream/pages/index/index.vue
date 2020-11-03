@@ -149,20 +149,6 @@ export default {
 					}
 				});
 		},
-		// getData() {
-		// 	let page = this.page;
-		// 	return this.$H
-		// 		.get('/live/list' + page)
-		// 		.then(res => {
-		// 			(this.list = page === 1 ? res : [...this.list, ...res]), (this.loadText = res.length < 10 ? '没有更多了' : '上拉加载更多');
-		// 		})
-		// 		.catch(err => {
-		// 			if (this.page > 1) {
-		// 				this.page--;
-		// 				this.loadText = '上拉加载更多';
-		// 			}
-		// 		});
-		// },
 		openLive(item) {
 			// console.log('进入转播方法');
 			console.log('视频地址' + item.url);

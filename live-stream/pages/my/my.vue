@@ -43,7 +43,6 @@
 			<f-list-item icon="iconfaxian" title="我的关注"><text class="text-muted font">0</text></f-list-item>
 			<f-list-item icon="iconmore" title="历史记录"></f-list-item>
 			<view @click="toShare"><f-list-item icon="iconfenxiang" title="分享列表"></f-list-item></view>
-			<view v-if="user" @click="logout"><f-list-item icon="iconwode" title="退出登录"></f-list-item></view>
 		</view>
 		<view class="f-divider"></view>
 	</view>
@@ -86,17 +85,6 @@ export default {
 		openLogin() {
 			uni.navigateTo({
 				url: '../login/login'
-			});
-		},
-		logout() {
-			this.$store.dispatch('logout').then(res => {
-				uni.showToast({
-					title: '退出成功',
-					icon: 'none'
-				});
-				uni.navigateTo({
-					url: '../login/login'
-				});
 			});
 		}
 	}

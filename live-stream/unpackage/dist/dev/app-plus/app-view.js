@@ -1517,26 +1517,11 @@ var render = function() {
                 },
                 [_c("f-list-item", { attrs: { _i: 32 } })],
                 1
-              ),
-              _vm._$g(33, "i")
-                ? _c(
-                    "v-uni-view",
-                    {
-                      attrs: { _i: 33 },
-                      on: {
-                        click: function($event) {
-                          return _vm.$handleViewEvent($event)
-                        }
-                      }
-                    },
-                    [_c("f-list-item", { attrs: { _i: 34 } })],
-                    1
-                  )
-                : _vm._e()
+              )
             ],
             1
           ),
-      _c("v-uni-view", { staticClass: _vm._$g(35, "sc"), attrs: { _i: 35 } })
+      _c("v-uni-view", { staticClass: _vm._$g(33, "sc"), attrs: { _i: 33 } })
     ],
     1
   )
@@ -4148,7 +4133,45 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("v-uni-view", { attrs: { _i: 0 } })
+  return _c(
+    "v-uni-view",
+    { attrs: { _i: 0 } },
+    [
+      _c("f-list-item", { attrs: { _i: 1 } }),
+      _c("f-list-item", { attrs: { _i: 2 } }),
+      _c("f-list-item", { attrs: { _i: 3 } }),
+      _c("f-list-item", { attrs: { _i: 4 } }),
+      _c("f-list-item", { attrs: { _i: 5 } }),
+      _c(
+        "v-uni-view",
+        { staticClass: _vm._$g(6, "sc"), attrs: { _i: 6 } },
+        [
+          _c(
+            "v-uni-view",
+            {
+              staticClass: _vm._$g(7, "sc"),
+              attrs: { "hover-class": "bg-main-hover", _i: 7 },
+              on: {
+                click: function($event) {
+                  return _vm.$handleViewEvent($event)
+                }
+              }
+            },
+            [
+              _c(
+                "v-uni-text",
+                { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } },
+                [_vm._v("退出登录")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -4180,8 +4203,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
-
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _fListItem = _interopRequireDefault(__webpack_require__(/*! ../../components/common/f-list-item.vue */ 26));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
 
   data: function data() {
@@ -4189,7 +4212,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       wxsProps: {} };
 
   },
-  components: {} };exports.default = _default;
+  components: {
+    'fListItem': _fListItem.default } };exports.default = _default;
 
 /***/ }),
 /* 85 */
