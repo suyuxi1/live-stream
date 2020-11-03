@@ -1,6 +1,10 @@
 <template>
 	<view>
-		<view class="top flex align-center justify-center"></view>
+		<view class="top">
+			<view style="position: absolute; top: 80rpx; right: 30rpx;" @click="settings">
+				<image src="../../static/shezhi.png"  style="width: 60rpx; height: 60rpx;" mode=""></image>
+			</view>
+		</view>
 		<view v-if="!user" class="flex align-center">
 			<view class="flex align-center justify-center" style="width: 180rpx; height: 180rpx;">
 				<image src="../../static/logo.png" class="rounded-circle" style="width: 105rpx; height: 105rpx;" mode=""></image>
@@ -68,6 +72,12 @@ export default {
 		this.$store.dispatch('getUserInfo');
 	},
 	methods: {
+		//设置图标
+		settings(){
+			this.authJump({
+				url: '../user-set/user-set'
+			});
+		},
 		toShare() {
 			uni.navigateTo({
 				url: '../share/share'

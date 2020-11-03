@@ -1,5 +1,6 @@
 <template>
 	<view class="container">
+		<view class="ml-5" style="position: fixed;" @click="goback"><text class="iconfont text-white">&#xe607;</text></view>
 		<!-- 头部 -->
 		<view class="flex align-center justify-center" style="height: 300rpx;">
 			<text style="font-size: 50rpx;" class="text-light">{{ loginType === '手机' ? '手机验证码登录' : '账号密码登录' }}</text>
@@ -144,6 +145,10 @@ export default {
 					this.codeBtn.text = '重新发送';
 				}
 			}, 1000);
+		},
+		//返回上一层页面
+		goback() {
+			uni.navigateBack({});
 		}
 	}
 };

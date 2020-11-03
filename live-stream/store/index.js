@@ -12,13 +12,30 @@ export default new Vuex.Store({
 		token: null
 	},
 	actions: {
+		//需要登录才能访问的方法，这个只能放在Vuex里才能生效--方法级别拦截
+		authMethod({
+			state
+		}, callback) {
+			if (!state.token) {
+				uni.showToast({
+					title: '请先登录',
+					icon: 'none'
+				});
+				return uni.navigateTo({
+					url: '/pages/login/login'
+				});
+			}
+			callback()
+		},
+
+
 		//初始化用户登录状态
 		initUser({
 			state
-		}){
+		}) {
 			let u = uni.getStorageSync('user')
 			let t = uni.getStorageSync('tokrn')
-			if(u){
+			if (u) {
 				state.user = JSON.parse(u)
 				state.token = t
 			}
