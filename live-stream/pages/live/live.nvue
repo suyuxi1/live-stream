@@ -1,16 +1,16 @@
 <template>
 	<view class="flex-1">
-		<video :src="url" :controls="false" show-fullscreen-btn autoplay class="flex-1"></video>
+		<video :src="src" :controls="false" show-fullscreen-btn autoplay class="flex-1"></video>
 
 		<!-- 头部 -->
 		<view style="position: fixed; left: 0; right: 0;" :style="'top:' + statusBarHeight + 'px'">
 			<!-- 个人信息|观看详细信息 -->
 			<view class="px-2 flex justify-between align-center" style="height: 80rpx;">
 				<view class="flex rounded-circle" style="width: 325rpx; background-color: rgba(0,0,0,0.4);">
-					<view class="p"><image src="../../static/my.png" style="width: 70rpx; height: 70rpx;" class="rounded-circle" mode=""></image></view>
+					<view class="p"><image :src=" detail.user.avatar || '../../static/logo.png' " style="width: 70rpx; height: 70rpx;" class="rounded-circle" mode=""></image></view>
 					<view class="flex-1 flex flex-column justify-center">
-						<text class="text-white font">Su</text>
-						<text class="text-white font-sm">200</text>
+						<text class="text-white font">{{detail.user.username}}</text>
+						<text class="text-white font-sm">{{detail.user.look_count}}</text>
 					</view>
 					<view class="p">
 						<view class="rounded-circle flex align-center justify-center bg-danger" style="width: 70rpx; height: 70rpx;"><text class="text-white">+</text></view>
@@ -120,6 +120,7 @@ import fGift from '../../components/common/f-gift.vue';
 import fDanmu from '../../components/common/f-danmu.vue';
 import uniPopup from '../../components/uni-popup/uni-popup.vue';
 import myGifts from '../../common/gifts.js';
+import $H from '../../common/request.js';
 export default {
 	components: {
 		fGift,
@@ -128,6 +129,25 @@ export default {
 	},
 	data() {
 		return {
+			id: 0,
+			detail: {
+				create_time: '',
+				id: 1,
+				title: '',
+				cover: '',
+				user_id: 0,
+				look_count: 0,
+				coin: 0,
+				key: '',
+				status: 0,
+				userId: 0,
+				user: {
+					id: 0,
+					username: '',
+					avatar: ''
+				}
+			},
+			sign: '',
 			url: '',
 			content: '',
 			statusBarHeight: 0,
@@ -148,20 +168,36 @@ export default {
 		// }, 3000);
 	},
 	onLoad(e) {
+		this.id = e.id;
+		console.log(this.id);
 		let res = uni.getSystemInfoSync();
 		this.statusBarHeight = res.statusBarHeight;
 		this.gifts = myGifts;
+		//请求后端接口，获取该直播间详情数据，包括主播信息，和直播间的签名等数据
+		$H.get('/live/read/' + this.id).then(res => {
+			console.log(res);
+			this.detail = res.data;
+			this.sign = res.sign;
+		});
 		// console.log('bar高度');
 		// console.log(this.statusBarHeight);
 		//非法地址处理
-		if (!e.url) {
-			uni.showToast({
-				title: '非法参数',
-				icon: 'none'
-			});
-			return uni.navigateBack({});
+		// if (!e.url) {
+		// 	uni.showToast({
+		// 		title: '非法参数',
+		// 		icon: 'none'
+		// 	});
+		// 	return uni.navigateBack({});
+		// }
+		// this.url = e.url;
+	},
+	computed:{
+		src(){
+			if(this.detail.key == '' || this.sign == ''){
+				return '';
+			}
+			return `http://suyuxi1.utools.club/live/${this.detail.key}.flv?sign=${this.sign}`;
 		}
-		this.url = e.url;
 	},
 	methods: {
 		openCoin() {
