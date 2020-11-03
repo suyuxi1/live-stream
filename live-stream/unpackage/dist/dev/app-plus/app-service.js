@@ -3173,126 +3173,167 @@ var render = function() {
           attrs: { _i: 1 }
         },
         [
-          _c("text", {
-            staticClass: _vm._$s(2, "sc", "text-light"),
-            attrs: { _i: 2 }
-          })
+          _c(
+            "text",
+            { staticClass: _vm._$s(2, "sc", "text-light"), attrs: { _i: 2 } },
+            [
+              _vm._v(
+                _vm._$s(
+                  2,
+                  "t0-0",
+                  _vm._s(
+                    _vm.loginType === "手机" ? "手机验证码登录" : "账号密码登录"
+                  )
+                )
+              )
+            ]
+          )
         ]
       ),
       _c("view", { staticClass: _vm._$s(3, "sc", "px-3"), attrs: { _i: 3 } }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.from.username,
-              expression: "from.username"
-            }
-          ],
-          staticClass: _vm._$s(
-            4,
-            "sc",
-            "px-3 mb-4 font rounded border text-white"
-          ),
-          attrs: { _i: 4 },
-          domProps: { value: _vm._$s(4, "v-model", _vm.from.username) },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.from, "username", $event.target.value)
-            }
-          }
-        }),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.from.password,
-              expression: "from.password"
-            }
-          ],
-          staticClass: _vm._$s(
-            5,
-            "sc",
-            "px-3 mb-4 font rounded border text-white"
-          ),
-          attrs: { _i: 5 },
-          domProps: { value: _vm._$s(5, "v-model", _vm.from.password) },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.from, "password", $event.target.value)
-            }
-          }
-        }),
-        _vm._$s(6, "i", _vm.type != "login")
-          ? _c("input", {
+        _c(
+          "view",
+          {
+            staticClass: _vm._$s(
+              4,
+              "sc",
+              "flex align-center border-bottom my-1"
+            ),
+            attrs: { _i: 4 }
+          },
+          [
+            _vm._$s(5, "i", _vm.loginType === "手机")
+              ? _c("text", {
+                  staticClass: _vm._$s(5, "sc", "text-white mr-3"),
+                  attrs: { _i: 5 }
+                })
+              : _vm._e(),
+            _c("input", {
               directives: [
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.from.repassword,
-                  expression: "from.repassword"
+                  value: _vm.changeAccount,
+                  expression: "changeAccount"
                 }
               ],
-              staticClass: _vm._$s(
-                6,
-                "sc",
-                "px-3 mb-4 font rounded border text-white"
-              ),
-              attrs: { _i: 6 },
-              domProps: { value: _vm._$s(6, "v-model", _vm.from.repassword) },
+              staticClass: _vm._$s(6, "sc", "font text-white"),
+              attrs: {
+                type: _vm._$s(
+                  6,
+                  "a-type",
+                  _vm.loginType === "手机" ? "number" : "text"
+                ),
+                placeholder: _vm._$s(
+                  6,
+                  "a-placeholder",
+                  _vm.loginType === "手机" ? "请输入手机号" : "昵称/手机/邮箱"
+                ),
+                _i: 6
+              },
+              domProps: { value: _vm._$s(6, "v-model", _vm.changeAccount) },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.from, "repassword", $event.target.value)
+                  _vm.changeAccount = $event.target.value
                 }
               }
             })
-          : _vm._e()
+          ]
+        ),
+        _c(
+          "view",
+          {
+            staticClass: _vm._$s(
+              7,
+              "sc",
+              "flex align-center justify-center border-bottom my-5"
+            ),
+            attrs: { _i: 7 }
+          },
+          [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.changeVerify,
+                  expression: "changeVerify"
+                }
+              ],
+              staticClass: _vm._$s(8, "sc", "font text-white"),
+              attrs: {
+                type: _vm._$s(
+                  8,
+                  "a-type",
+                  _vm.loginType === "手机" ? "number" : "password"
+                ),
+                placeholder: _vm._$s(
+                  8,
+                  "a-placeholder",
+                  _vm.loginType === "手机" ? "请输入验证码" : "请输入密码"
+                ),
+                _i: 8
+              },
+              domProps: { value: _vm._$s(8, "v-model", _vm.changeVerify) },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.changeVerify = $event.target.value
+                }
+              }
+            }),
+            _vm._$s(9, "i", _vm.loginType === "手机")
+              ? _c(
+                  "button",
+                  {
+                    staticClass: _vm._$s(9, "sc", "mr-0"),
+                    attrs: {
+                      disabled: _vm._$s(9, "a-disabled", this.codeBtn.disabled),
+                      _i: 9
+                    },
+                    on: { click: _vm.sendCode }
+                  },
+                  [_vm._v(_vm._$s(9, "t0-0", _vm._s(_vm.codeBtn.text)))]
+                )
+              : _c("button", {
+                  staticClass: _vm._$s(10, "sc", "mr-0"),
+                  attrs: { _i: 10 }
+                })
+          ]
+        )
       ]),
       _c(
         "view",
         {
-          staticClass: _vm._$s(7, "sc", "p-3 flex align-center justify-center"),
-          attrs: { _i: 7 },
-          on: { click: _vm.submit }
+          staticClass: _vm._$s(
+            11,
+            "sc",
+            "p-3 flex align-center justify-center"
+          ),
+          attrs: { _i: 11 }
         },
         [
           _c(
             "view",
             {
               staticClass: _vm._$s(
-                8,
+                12,
                 "sc",
                 "bg-main rounded p-3 flex align-center justify-center flex-1"
               ),
-              attrs: { _i: 8 }
+              attrs: { _i: 12 },
+              on: { click: _vm.login }
             },
             [
-              _c(
-                "text",
-                {
-                  staticClass: _vm._$s(9, "sc", "text-white font-md"),
-                  attrs: { _i: 9 }
-                },
-                [
-                  _vm._v(
-                    _vm._$s(
-                      9,
-                      "t0-0",
-                      _vm._s(_vm.type === "login" ? "登 录" : "注册")
-                    )
-                  )
-                ]
-              )
+              _c("text", {
+                staticClass: _vm._$s(13, "sc", "text-white font-md"),
+                attrs: { _i: 13 }
+              })
             ]
           )
         ]
@@ -3300,27 +3341,109 @@ var render = function() {
       _c(
         "view",
         {
-          staticClass: _vm._$s(10, "sc", "flex align-center justify-center"),
-          attrs: { _i: 10 }
+          staticClass: _vm._$s(
+            14,
+            "sc",
+            "flex align-center justify-center my-2"
+          ),
+          attrs: { _i: 14 }
         },
         [
           _c(
             "text",
             {
-              staticClass: _vm._$s(11, "sc", "text-light-muted font p-2"),
-              attrs: { _i: 11 },
-              on: { click: _vm.changeType }
+              staticClass: _vm._$s(15, "sc", "text-white px-1"),
+              attrs: { _i: 15 },
+              on: { click: _vm.changeLoginType }
             },
             [
               _vm._v(
                 _vm._$s(
-                  11,
+                  15,
                   "t0-0",
-                  _vm._s(_vm.type === "login" ? "注册账号" : "去登录")
+                  _vm._s(
+                    _vm.loginType === "手机" ? "账号密码登录" : "验证码登录"
+                  )
                 )
               )
             ]
-          )
+          ),
+          _c("text", {
+            staticClass: _vm._$s(16, "sc", "text-white px-1"),
+            attrs: { _i: 16 }
+          }),
+          _c("text", {
+            staticClass: _vm._$s(17, "sc", "text-white px-1"),
+            attrs: { _i: 17 }
+          })
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: _vm._$s(
+            18,
+            "sc",
+            "flex align-center justify-center my-5"
+          ),
+          attrs: { _i: 18 }
+        },
+        [
+          _c("text", {
+            staticClass: _vm._$s(19, "sc", "text-light-muted"),
+            attrs: { _i: 19 }
+          })
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: _vm._$s(20, "sc", "flex align-center justify-center "),
+          attrs: { _i: 20 }
+        },
+        [
+          _c("image", {
+            staticClass: _vm._$s(21, "sc", "rounded-circle px-5"),
+            attrs: {
+              src: _vm._$s(21, "a-src", __webpack_require__(/*! ../../static/login/wx.png */ 60)),
+              _i: 21
+            }
+          }),
+          _c("image", {
+            staticClass: _vm._$s(22, "sc", "rounded-circle px-5"),
+            attrs: {
+              src: _vm._$s(22, "a-src", __webpack_require__(/*! ../../static/login/qq.png */ 61)),
+              _i: 22
+            }
+          }),
+          _c("image", {
+            staticClass: _vm._$s(23, "sc", "rounded-circle px-5"),
+            attrs: {
+              src: _vm._$s(23, "a-src", __webpack_require__(/*! ../../static/login/wb.png */ 62)),
+              _i: 23
+            }
+          })
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: _vm._$s(
+            24,
+            "sc",
+            "flex align-center justify-center my-5"
+          ),
+          attrs: { _i: 24 }
+        },
+        [
+          _c("text", {
+            staticClass: _vm._$s(25, "sc", "text-light-muted"),
+            attrs: { _i: 25 }
+          }),
+          _c("text", {
+            staticClass: _vm._$s(26, "sc", "text-white"),
+            attrs: { _i: 26 }
+          })
         ]
       )
     ]
@@ -3333,9 +3456,36 @@ render._withStripped = true
 
 
 /***/ }),
-/* 60 */,
-/* 61 */,
-/* 62 */,
+/* 60 */
+/*!**************************************************************************!*\
+  !*** D:/su/HBuilderProjects/live-stream/live-stream/static/login/wx.png ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = \"/static/login/wx.png\";//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbbnVsbF0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBIiwiZmlsZSI6IjYwLmpzIiwic291cmNlc0NvbnRlbnQiOlsibW9kdWxlLmV4cG9ydHMgPSBcIi9zdGF0aWMvbG9naW4vd3gucG5nXCI7Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///60\n");
+
+/***/ }),
+/* 61 */
+/*!**************************************************************************!*\
+  !*** D:/su/HBuilderProjects/live-stream/live-stream/static/login/qq.png ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = \"/static/login/qq.png\";//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbbnVsbF0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBIiwiZmlsZSI6IjYxLmpzIiwic291cmNlc0NvbnRlbnQiOlsibW9kdWxlLmV4cG9ydHMgPSBcIi9zdGF0aWMvbG9naW4vcXEucG5nXCI7Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///61\n");
+
+/***/ }),
+/* 62 */
+/*!**************************************************************************!*\
+  !*** D:/su/HBuilderProjects/live-stream/live-stream/static/login/wb.png ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = \"/static/login/wb.png\";//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbbnVsbF0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBIiwiZmlsZSI6IjYyLmpzIiwic291cmNlc0NvbnRlbnQiOlsibW9kdWxlLmV4cG9ydHMgPSBcIi9zdGF0aWMvbG9naW4vd2IucG5nXCI7Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///62\n");
+
+/***/ }),
 /* 63 */
 /*!****************************************************************************************************************!*\
   !*** D:/su/HBuilderProjects/live-stream/live-stream/pages/login/login.vue?vue&type=script&lang=js&mpType=page ***!
@@ -3355,7 +3505,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _stu
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0; //\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\nvar _default =\n{\n  data: function data() {\n    return {\n      loginType: '手机',\n      type: 'login',\n      from: {\n        username: '',\n        password: '',\n        repassword: '' } };\n\n\n  },\n  methods: {\n    changeLoginType: function changeLoginType() {\n      this.loginType = this.loginType === '手机' ? '账密' : '手机';\n    },\n    changeType: function changeType() {\n      this.type = this.type === 'login' ? 'reg' : 'login';\n    },\n    submit: function submit() {var _this = this;\n      var msg = this.type === 'login' ? '登录' : '注册';\n      this.$H.post('/' + this.type, this.from).then(function (res) {\n        uni.showToast({\n          title: msg + '成功',\n          icon: 'none' });\n\n        if (_this.type === 'reg') {\n          _this.changeType();\n          _this.form = {\n            username: '',\n            password: '',\n            repassword: '' };\n\n        } else {\n          _this.$store.dispatch('login', res);\n          uni.navigateBack({\n            delta: 1 });\n\n        }\n      });\n    } } };exports.default = _default;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vcGFnZXMvbG9naW4vbG9naW4udnVlIl0sIm5hbWVzIjpbImRhdGEiLCJsb2dpblR5cGUiLCJ0eXBlIiwiZnJvbSIsInVzZXJuYW1lIiwicGFzc3dvcmQiLCJyZXBhc3N3b3JkIiwibWV0aG9kcyIsImNoYW5nZUxvZ2luVHlwZSIsImNoYW5nZVR5cGUiLCJzdWJtaXQiLCJtc2ciLCIkSCIsInBvc3QiLCJ0aGVuIiwicmVzIiwidW5pIiwic2hvd1RvYXN0IiwidGl0bGUiLCJpY29uIiwiZm9ybSIsIiRzdG9yZSIsImRpc3BhdGNoIiwibmF2aWdhdGVCYWNrIiwiZGVsdGEiXSwibWFwcGluZ3MiOiJ3RkFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRWU7QUFDZEEsTUFEYyxrQkFDUDtBQUNOLFdBQU87QUFDTkMsZUFBUyxFQUFFLElBREw7QUFFTkMsVUFBSSxFQUFFLE9BRkE7QUFHTkMsVUFBSSxFQUFFO0FBQ0xDLGdCQUFRLEVBQUUsRUFETDtBQUVMQyxnQkFBUSxFQUFFLEVBRkw7QUFHTEMsa0JBQVUsRUFBRSxFQUhQLEVBSEEsRUFBUDs7O0FBU0EsR0FYYTtBQVlkQyxTQUFPLEVBQUU7QUFDUkMsbUJBRFEsNkJBQ1U7QUFDakIsV0FBS1AsU0FBTCxHQUFpQixLQUFLQSxTQUFMLEtBQW1CLElBQW5CLEdBQTBCLElBQTFCLEdBQWlDLElBQWxEO0FBQ0EsS0FITztBQUlSUSxjQUpRLHdCQUlLO0FBQ1osV0FBS1AsSUFBTCxHQUFZLEtBQUtBLElBQUwsS0FBYyxPQUFkLEdBQXdCLEtBQXhCLEdBQWdDLE9BQTVDO0FBQ0EsS0FOTztBQU9SUSxVQVBRLG9CQU9DO0FBQ1IsVUFBSUMsR0FBRyxHQUFHLEtBQUtULElBQUwsS0FBYyxPQUFkLEdBQXdCLElBQXhCLEdBQStCLElBQXpDO0FBQ0EsV0FBS1UsRUFBTCxDQUFRQyxJQUFSLENBQWEsTUFBTSxLQUFLWCxJQUF4QixFQUE4QixLQUFLQyxJQUFuQyxFQUF5Q1csSUFBekMsQ0FBOEMsVUFBQUMsR0FBRyxFQUFJO0FBQ3BEQyxXQUFHLENBQUNDLFNBQUosQ0FBYztBQUNiQyxlQUFLLEVBQUVQLEdBQUcsR0FBRyxJQURBO0FBRWJRLGNBQUksRUFBRSxNQUZPLEVBQWQ7O0FBSUEsWUFBSSxLQUFJLENBQUNqQixJQUFMLEtBQWMsS0FBbEIsRUFBeUI7QUFDeEIsZUFBSSxDQUFDTyxVQUFMO0FBQ0EsZUFBSSxDQUFDVyxJQUFMLEdBQVk7QUFDWGhCLG9CQUFRLEVBQUUsRUFEQztBQUVYQyxvQkFBUSxFQUFFLEVBRkM7QUFHWEMsc0JBQVUsRUFBRSxFQUhELEVBQVo7O0FBS0EsU0FQRCxNQU9PO0FBQ04sZUFBSSxDQUFDZSxNQUFMLENBQVlDLFFBQVosQ0FBcUIsT0FBckIsRUFBOEJQLEdBQTlCO0FBQ0FDLGFBQUcsQ0FBQ08sWUFBSixDQUFpQjtBQUNoQkMsaUJBQUssRUFBRSxDQURTLEVBQWpCOztBQUdBO0FBQ0QsT0FsQkQ7QUFtQkEsS0E1Qk8sRUFaSyxFIiwiZmlsZSI6IjY0LmpzIiwic291cmNlc0NvbnRlbnQiOlsiLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuLy9cclxuXHJcbmV4cG9ydCBkZWZhdWx0IHtcclxuXHRkYXRhKCkge1xyXG5cdFx0cmV0dXJuIHtcclxuXHRcdFx0bG9naW5UeXBlOiAn5omL5py6JyxcclxuXHRcdFx0dHlwZTogJ2xvZ2luJyxcclxuXHRcdFx0ZnJvbToge1xyXG5cdFx0XHRcdHVzZXJuYW1lOiAnJyxcclxuXHRcdFx0XHRwYXNzd29yZDogJycsXHJcblx0XHRcdFx0cmVwYXNzd29yZDogJydcclxuXHRcdFx0fVxyXG5cdFx0fTtcclxuXHR9LFxyXG5cdG1ldGhvZHM6IHtcclxuXHRcdGNoYW5nZUxvZ2luVHlwZSgpIHtcclxuXHRcdFx0dGhpcy5sb2dpblR5cGUgPSB0aGlzLmxvZ2luVHlwZSA9PT0gJ+aJi+acuicgPyAn6LSm5a+GJyA6ICfmiYvmnLonO1xyXG5cdFx0fSxcclxuXHRcdGNoYW5nZVR5cGUoKSB7XHJcblx0XHRcdHRoaXMudHlwZSA9IHRoaXMudHlwZSA9PT0gJ2xvZ2luJyA/ICdyZWcnIDogJ2xvZ2luJztcclxuXHRcdH0sXHJcblx0XHRzdWJtaXQoKSB7XHJcblx0XHRcdGxldCBtc2cgPSB0aGlzLnR5cGUgPT09ICdsb2dpbicgPyAn55m75b2VJyA6ICfms6jlhownO1xyXG5cdFx0XHR0aGlzLiRILnBvc3QoJy8nICsgdGhpcy50eXBlLCB0aGlzLmZyb20pLnRoZW4ocmVzID0+IHtcclxuXHRcdFx0XHR1bmkuc2hvd1RvYXN0KHtcclxuXHRcdFx0XHRcdHRpdGxlOiBtc2cgKyAn5oiQ5YqfJyxcclxuXHRcdFx0XHRcdGljb246ICdub25lJ1xyXG5cdFx0XHRcdH0pO1xyXG5cdFx0XHRcdGlmICh0aGlzLnR5cGUgPT09ICdyZWcnKSB7XHJcblx0XHRcdFx0XHR0aGlzLmNoYW5nZVR5cGUoKTtcclxuXHRcdFx0XHRcdHRoaXMuZm9ybSA9IHtcclxuXHRcdFx0XHRcdFx0dXNlcm5hbWU6ICcnLFxyXG5cdFx0XHRcdFx0XHRwYXNzd29yZDogJycsXHJcblx0XHRcdFx0XHRcdHJlcGFzc3dvcmQ6ICcnXHJcblx0XHRcdFx0XHR9O1xyXG5cdFx0XHRcdH0gZWxzZSB7XHJcblx0XHRcdFx0XHR0aGlzLiRzdG9yZS5kaXNwYXRjaCgnbG9naW4nLCByZXMpO1xyXG5cdFx0XHRcdFx0dW5pLm5hdmlnYXRlQmFjayh7XHJcblx0XHRcdFx0XHRcdGRlbHRhOiAxXHJcblx0XHRcdFx0XHR9KTtcclxuXHRcdFx0XHR9XHJcblx0XHRcdH0pO1xyXG5cdFx0fVxyXG5cdH1cclxufTtcclxuIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///64\n");
+eval("/* WEBPACK VAR INJECTION */(function(__f__) {Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0; //\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\nvar _default =\n{\n  data: function data() {\n    return {\n      loginType: '手机',\n      phone: '',\n      code: '',\n      //获取验证码\n      codeBtn: {\n        text: '获取验证码',\n        seconds: 10,\n        disabled: false },\n\n      from: {\n        username: 'sususu',\n        password: '123456',\n        repassword: '' } };\n\n\n  },\n  computed: {\n    changeAccount: {\n      get: function get() {\n        return this.loginType === '手机' ? this.phone : this.from.username;\n      },\n      set: function set(val) {\n        this.loginType === '手机' ? this.phone = val : this.from.username = val;\n      } },\n\n    changeVerify: {\n      get: function get() {\n        return this.loginType === '手机' ? this.code : this.from.password;\n      },\n      set: function set(val) {\n        this.loginType === '手机' ? this.code = val : this.from.password = val;\n      } } },\n\n\n\n  methods: {\n    //login登录\n    login: function login() {var _this = this;\n      if (this.loginType === '手机') {\n        __f__(\"log\", this.phone, \" at pages/login/login.vue:109\");\n        uni.showToast({\n          title: '验证码已发送',\n          icon: 'none' });\n\n      } else {\n        __f__(\"log\", this.from, \" at pages/login/login.vue:115\");\n        this.$H.post('/login', this.from).then(function (res) {\n          uni.showToast({\n            title: '登录成功',\n            icon: 'none' });\n\n          _this.$store.dispatch('login', res);\n          uni.navigateBack({\n            delta: 1 });\n\n          __f__(\"log\", res.data.data, \" at pages/login/login.vue:125\");\n        });\n      }\n    },\n    changeLoginType: function changeLoginType() {\n      this.loginType = this.loginType === '手机' ? '账密' : '手机';\n    },\n    //倒计时\n    sendCode: function sendCode() {var _this2 = this;\n      // this.codeBtn.waitingCode = true;\n      this.codeBtn.disabled = true;\n      this.codeBtn.text = this.codeBtn.seconds + 'S后重新发送';\n      var countdown = setInterval(function () {\n        _this2.codeBtn.seconds--;\n        _this2.codeBtn.text = _this2.codeBtn.seconds + 'S后重新发送';\n        if (_this2.codeBtn.seconds < 0) {\n          _this2.codeBtn.disabled = false;\n          clearInterval(countdown);\n          _this2.codeBtn.seconds = 10;\n          _this2.codeBtn.text = '重新发送';\n        }\n      }, 1000);\n    } } };exports.default = _default;\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/lib/format-log.js */ 9)[\"default\"]))//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vcGFnZXMvbG9naW4vbG9naW4udnVlIl0sIm5hbWVzIjpbImRhdGEiLCJsb2dpblR5cGUiLCJwaG9uZSIsImNvZGUiLCJjb2RlQnRuIiwidGV4dCIsInNlY29uZHMiLCJkaXNhYmxlZCIsImZyb20iLCJ1c2VybmFtZSIsInBhc3N3b3JkIiwicmVwYXNzd29yZCIsImNvbXB1dGVkIiwiY2hhbmdlQWNjb3VudCIsImdldCIsInNldCIsInZhbCIsImNoYW5nZVZlcmlmeSIsIm1ldGhvZHMiLCJsb2dpbiIsInVuaSIsInNob3dUb2FzdCIsInRpdGxlIiwiaWNvbiIsIiRIIiwicG9zdCIsInRoZW4iLCJyZXMiLCIkc3RvcmUiLCJkaXNwYXRjaCIsIm5hdmlnYXRlQmFjayIsImRlbHRhIiwiY2hhbmdlTG9naW5UeXBlIiwic2VuZENvZGUiLCJjb3VudGRvd24iLCJzZXRJbnRlcnZhbCIsImNsZWFySW50ZXJ2YWwiXSwibWFwcGluZ3MiOiJxSUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVlO0FBQ2RBLE1BRGMsa0JBQ1A7QUFDTixXQUFPO0FBQ05DLGVBQVMsRUFBRSxJQURMO0FBRU5DLFdBQUssRUFBRSxFQUZEO0FBR05DLFVBQUksRUFBRSxFQUhBO0FBSU47QUFDQUMsYUFBTyxFQUFFO0FBQ1JDLFlBQUks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LFNBQUQsQ0FBYjtBQUNBLGdCQUFJLENBQUM5QixPQUFMLENBQWFFLE9BQWIsR0FBdUIsRUFBdkI7QUFDQSxnQkFBSSxDQUFDRixPQUFMLENBQWFDLElBQWIsR0FBb0IsTUFBcEI7QUFDQTtBQUNELE9BVDBCLEVBU3hCLElBVHdCLENBQTNCO0FBVUEsS0ExQ08sRUF0Q0ssRSIsImZpbGUiOiI2NC5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcbi8vXHJcblxyXG5leHBvcnQgZGVmYXVsdCB7XHJcblx0ZGF0YSgpIHtcclxuXHRcdHJldHVybiB7XHJcblx0XHRcdGxvZ2luVHlwZTogJ+aJi+acuicsXHJcblx0XHRcdHBob25lOiAnJyxcclxuXHRcdFx0Y29kZTogJycsXHJcblx0XHRcdC8v6I635Y+W6aqM6K+B56CBXHJcblx0XHRcdGNvZGVCdG46IHtcclxuXHRcdFx0XHR0ZXh0OiAn6I635Y+W6aqM6K+B56CBJyxcclxuXHRcdFx0XHRzZWNvbmRzOiAxMCxcclxuXHRcdFx0XHRkaXNhYmxlZDogZmFsc2VcclxuXHRcdFx0fSxcclxuXHRcdFx0ZnJvbToge1xyXG5cdFx0XHRcdHVzZXJuYW1lOiAnc3VzdXN1JyxcclxuXHRcdFx0XHRwYXNzd29yZDogJzEyMzQ1NicsXHJcblx0XHRcdFx0cmVwYXNzd29yZDogJydcclxuXHRcdFx0fVxyXG5cdFx0fTtcclxuXHR9LFxyXG5cdGNvbXB1dGVkOiB7XHJcblx0XHRjaGFuZ2VBY2NvdW50OiB7XHJcblx0XHRcdGdldCgpIHtcclxuXHRcdFx0XHRyZXR1cm4gdGhpcy5sb2dpblR5cGUgPT09ICfmiYvmnLonID8gdGhpcy5waG9uZSA6IHRoaXMuZnJvbS51c2VybmFtZTtcclxuXHRcdFx0fSxcclxuXHRcdFx0c2V0KHZhbCkge1xyXG5cdFx0XHRcdHRoaXMubG9naW5UeXBlID09PSAn5omL5py6JyA/ICh0aGlzLnBob25lID0gdmFsKSA6ICh0aGlzLmZyb20udXNlcm5hbWUgPSB2YWwpO1xyXG5cdFx0XHR9XHJcblx0XHR9LFxyXG5cdFx0Y2hhbmdlVmVyaWZ5OiB7XHJcblx0XHRcdGdldCgpIHtcclxuXHRcdFx0XHRyZXR1cm4gdGhpcy5sb2dpblR5cGUgPT09ICfmiYvmnLonID8gdGhpcy5jb2RlIDogdGhpcy5mcm9tLnBhc3N3b3JkO1xyXG5cdFx0XHR9LFxyXG5cdFx0XHRzZXQodmFsKSB7XHJcblx0XHRcdFx0dGhpcy5sb2dpblR5cGUgPT09ICfmiYvmnLonID8gKHRoaXMuY29kZSA9IHZhbCkgOiAodGhpcy5mcm9tLnBhc3N3b3JkID0gdmFsKTtcclxuXHRcdFx0fVxyXG5cdFx0fVxyXG5cdH0sXHJcblxyXG5cdG1ldGhvZHM6IHtcclxuXHRcdC8vbG9naW7nmbvlvZVcclxuXHRcdGxvZ2luKCkge1xyXG5cdFx0XHRpZiAodGhpcy5sb2dpblR5cGUgPT09ICfmiYvmnLonKSB7XHJcblx0XHRcdFx0Y29uc29sZS5sb2codGhpcy5waG9uZSk7XHJcblx0XHRcdFx0dW5pLnNob3dUb2FzdCh7XHJcblx0XHRcdFx0XHR0aXRsZTogJ+mqjOivgeeggeW3suWPkemAgScsXHJcblx0XHRcdFx0XHRpY29uOiAnbm9uZSdcclxuXHRcdFx0XHR9KTtcclxuXHRcdFx0fSBlbHNlIHtcclxuXHRcdFx0XHRjb25zb2xlLmxvZyh0aGlzLmZyb20pO1xyXG5cdFx0XHRcdHRoaXMuJEgucG9zdCgnL2xvZ2luJywgdGhpcy5mcm9tKS50aGVuKHJlcyA9PiB7XHJcblx0XHRcdFx0XHR1bmkuc2hvd1RvYXN0KHtcclxuXHRcdFx0XHRcdFx0dGl0bGU6ICfnmbvlvZXmiJDlip8nLFxyXG5cdFx0XHRcdFx0XHRpY29uOiAnbm9uZSdcclxuXHRcdFx0XHRcdH0pO1xyXG5cdFx0XHRcdFx0dGhpcy4kc3RvcmUuZGlzcGF0Y2goJ2xvZ2luJywgcmVzKTtcclxuXHRcdFx0XHRcdHVuaS5uYXZpZ2F0ZUJhY2soe1xyXG5cdFx0XHRcdFx0XHRkZWx0YTogMVxyXG5cdFx0XHRcdFx0fSk7XHJcblx0XHRcdFx0XHRjb25zb2xlLmxvZyhyZXMuZGF0YS5kYXRhKTtcclxuXHRcdFx0XHR9KTtcclxuXHRcdFx0fVxyXG5cdFx0fSxcclxuXHRcdGNoYW5nZUxvZ2luVHlwZSgpIHtcclxuXHRcdFx0dGhpcy5sb2dpblR5cGUgPSB0aGlzLmxvZ2luVHlwZSA9PT0gJ+aJi+acuicgPyAn6LSm5a+GJyA6ICfmiYvmnLonO1xyXG5cdFx0fSxcclxuXHRcdC8v5YCS6K6h5pe2XHJcblx0XHRzZW5kQ29kZSgpIHtcclxuXHRcdFx0Ly8gdGhpcy5jb2RlQnRuLndhaXRpbmdDb2RlID0gdHJ1ZTtcclxuXHRcdFx0dGhpcy5jb2RlQnRuLmRpc2FibGVkID0gdHJ1ZTtcclxuXHRcdFx0dGhpcy5jb2RlQnRuLnRleHQgPSB0aGlzLmNvZGVCdG4uc2Vjb25kcyArICdT5ZCO6YeN5paw5Y+R6YCBJztcclxuXHRcdFx0bGV0IGNvdW50ZG93biA9IHNldEludGVydmFsKCgpID0+IHtcclxuXHRcdFx0XHR0aGlzLmNvZGVCdG4uc2Vjb25kcy0tO1xyXG5cdFx0XHRcdHRoaXMuY29kZUJ0bi50ZXh0ID0gdGhpcy5jb2RlQnRuLnNlY29uZHMgKyAnU+WQjumHjeaWsOWPkemAgSc7XHJcblx0XHRcdFx0aWYgKHRoaXMuY29kZUJ0bi5zZWNvbmRzIDwgMCkge1xyXG5cdFx0XHRcdFx0dGhpcy5jb2RlQnRuLmRpc2FibGVkID0gZmFsc2U7XHJcblx0XHRcdFx0XHRjbGVhckludGVydmFsKGNvdW50ZG93bik7XHJcblx0XHRcdFx0XHR0aGlzLmNvZGVCdG4uc2Vjb25kcyA9IDEwO1xyXG5cdFx0XHRcdFx0dGhpcy5jb2RlQnRuLnRleHQgPSAn6YeN5paw5Y+R6YCBJztcclxuXHRcdFx0XHR9XHJcblx0XHRcdH0sIDEwMDApO1xyXG5cdFx0fVxyXG5cdH1cclxufTtcclxuIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///64\n");
 
 /***/ }),
 /* 65 */
