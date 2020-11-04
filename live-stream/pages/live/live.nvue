@@ -10,7 +10,7 @@
 					<view class="p"><image :src="detail.user.avatar || '../../static/logo.png'" style="width: 70rpx; height: 70rpx;" class="rounded-circle" mode=""></image></view>
 					<view class="flex-1 flex flex-column justify-center">
 						<text class="text-white font">{{ detail.user.username }}</text>
-						<text class="text-white font-sm">{{ detail.user.look_count }}</text>
+						<text class="text-white font-sm">{{ detail.title }}</text>
 					</view>
 					<view class="p">
 						<view class="rounded-circle flex align-center justify-center bg-danger" style="width: 70rpx; height: 70rpx;"><text class="text-white">+</text></view>
@@ -18,13 +18,13 @@
 				</view>
 				<view class="flex rounded-circle" style="width: 325rpx; background-color: rgba(0,0,0,0.4);">
 					<scroll-view scroll-x="true" class="flex-1 flex">
-						<view class="p" v-for="i in 20" :key="i">
+						<view class="p" v-for="i in detail.look_count" :key="i">
 							<image src="../../static/index.png" mode="" style="width: 70rpx; height: 70rpx;" class="rounded-circle"></image>
 						</view>
 					</scroll-view>
 					<view class="p">
 						<view class="rounded-circle flex align-center justify-center bg-danger" style="width: 70rpx; height: 70rpx;">
-							<text class="text-white font-sm">20</text>
+							<text class="text-white font-sm">{{ list.length }}</text>
 						</view>
 					</view>
 				</view>
@@ -33,7 +33,9 @@
 			<view class="px-2 my-1" style="height: 80rpx">
 				<view class="flex rounded-circle align-center" style="width: 325rpx; background-color: rgba(0,0,0,0.4);">
 					<view class="p"><text class="text-warning">金币</text></view>
-					<view class="flex-1 flex flex-column justify-center"><text class="text-white font">100</text></view>
+					<view class="flex-1 flex flex-column justify-center">
+						<text class="text-white font">{{ detail.coin }}</text>
+					</view>
 				</view>
 			</view>
 			<!-- 收到礼物 -->
@@ -121,6 +123,7 @@ import fDanmu from '../../components/common/f-danmu.vue';
 import uniPopup from '../../components/uni-popup/uni-popup.vue';
 import myGifts from '../../common/gifts.js';
 import $H from '../../common/request.js';
+import $C from '../../common/config.js';
 import { mapState } from 'vuex';
 export default {
 	components: {
@@ -153,10 +156,13 @@ export default {
 			content: '',
 			statusBarHeight: 0,
 			gifts: [],
-			giftActiveId: 0
+			giftActiveId: 0,
+			list: []
 		};
 	},
 	mounted() {
+		//加入直播间
+		this.joinOrLeaveLive('join');
 		//送礼物演示
 		// setInterval(() => {
 		// 	this.$refs.gift.send({
@@ -194,6 +200,8 @@ export default {
 	},
 	computed: {
 		...mapState({
+			socket: state => state.socket,
+			token: state => state.token,
 			user: state => state.user
 		}),
 		src() {
@@ -204,6 +212,33 @@ export default {
 		}
 	},
 	methods: {
+		// 处理直播间事件
+		handleLiveEvent(e) {
+			console.log(e);
+			let d = e.data;
+			switch (e.type) {
+				case 'online':
+					if (d.action === 'join') {
+						this.list = d.data;
+					}
+					if (d.action === 'leave') {
+						this.list = d.data;
+					}
+					break;
+				default:
+					break;
+			}
+		},
+
+		//加入或离开直播间
+		joinOrLeaveLive(type) {
+			if (this.socket && this.token) {
+				this.socket.emit(type + 'Live', {
+					live_id: this.id,
+					token: this.token
+				});
+			}
+		},
 		openCoin() {
 			uni.navigateTo({
 				url: '../coin/coin'

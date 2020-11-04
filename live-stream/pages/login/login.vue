@@ -81,7 +81,7 @@ export default {
 				code: ''
 			},
 			from: {
-				username: 'sususu',
+				username: 'sususu1',
 				password: '123456',
 				repassword: ''
 			}

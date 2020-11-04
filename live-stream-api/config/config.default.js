@@ -100,7 +100,7 @@ module.exports = (appInfo) => {
       host: '120.25.149.156',
       // host: '127.0.0.1', // Redis host
       password: '',
-      db: 1,
+      db: 2,
     },
   }
   // 流媒体配置
