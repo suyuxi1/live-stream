@@ -97,7 +97,7 @@ module.exports = (appInfo) => {
   config.redis = {
     client: {
       port: 6379, // Redis port
-      host: '120.25.149.156', 
+      host: '120.25.149.156',
       // host: '127.0.0.1', // Redis host
       password: '',
       db: 1,
@@ -127,6 +127,23 @@ module.exports = (appInfo) => {
 
   config.auth = {
     match: ['/api/live/create', '/api/logout', '/api/user/info', '/api/live/changestatus'],
+  }
+
+  config.io = {
+    init: {
+      wsEngine: 'ws',
+    },
+    namespace: {
+      '/': {
+        connectionMiddleware: [],
+        packetMiddleware: [],
+      },
+    },
+    redis: {
+      host: '120.25.149.156',
+      port: 6379,
+      db: 0,
+    },
   }
 
   return {

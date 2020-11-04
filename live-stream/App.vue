@@ -3,6 +3,8 @@ export default {
 	onLaunch: function() {
 		console.log(this.$store.state.test);
 		console.log('App Launch');
+		this.$store.dispatch('connectSocket');
+
 		const domModule = weex.requireModule('dom');
 		domModule.addRule('fontFace', {
 			fontFamily: 'iconfont',
