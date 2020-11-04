@@ -17,11 +17,13 @@
 					</view>
 				</view>
 				<view class="flex rounded-circle" style="width: 325rpx; background-color: rgba(0,0,0,0.4);">
+					<!-- 实时在线观看用户状态 -->
 					<scroll-view scroll-x="true" class="flex-1 flex">
-						<view class="p" v-for="i in detail.look_count" :key="i">
-							<image src="../../static/index.png" mode="" style="width: 70rpx; height: 70rpx;" class="rounded-circle"></image>
+						<view class="p" v-for="(item, index) in list" :key="index">
+							<image :src=" item.avatar || '../../static/index.png' " mode="" style="width: 70rpx; height: 70rpx;" class="rounded-circle"></image>
 						</view>
 					</scroll-view>
+					<!-- 在线观看人数 -->
 					<view class="p">
 						<view class="rounded-circle flex align-center justify-center bg-danger" style="width: 70rpx; height: 70rpx;">
 							<text class="text-white font-sm">{{ list.length }}</text>
@@ -157,6 +159,7 @@ export default {
 			statusBarHeight: 0,
 			gifts: [],
 			giftActiveId: 0,
+			//在线用户列表
 			list: []
 		};
 	},
@@ -186,6 +189,8 @@ export default {
 			this.detail = res.data;
 			this.sign = res.sign;
 		});
+		//监听全局事件
+		uni.$on('live', this.handleLiveEvent);
 		// console.log('bar高度');
 		// console.log(this.statusBarHeight);
 		//非法地址处理
@@ -219,9 +224,6 @@ export default {
 			switch (e.type) {
 				case 'online':
 					if (d.action === 'join') {
-						this.list = d.data;
-					}
-					if (d.action === 'leave') {
 						this.list = d.data;
 					}
 					break;

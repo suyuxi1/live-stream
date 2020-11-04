@@ -9,7 +9,7 @@ module.exports = (app) => {
   //socket路由配置测试
   // io.of('/').route('test', io.controller.nsp.test)
 
-  io.of('/').route('joinLive', io.controller.live.joinLive)
+  io.of('/').route('joinLive', io.controller.nsp.joinLive)
 
   //手机验证码登录
   router.post('/api/phoneLogin', controller.api.user.phoneLogin)
