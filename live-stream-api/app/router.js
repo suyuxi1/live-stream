@@ -7,6 +7,10 @@ module.exports = (app) => {
   const { router, controller } = app
   router.get('/', controller.home.index)
 
+  //手机验证码登录
+  router.post('/api/phoneLogin', controller.api.user.phoneLogin)
+  //发送手机验证码
+  router.post('/api/sendcode', controller.api.sms.sendCode)
   // 用户注册
   router.post('/api/reg', controller.api.user.reg)
   // 用户登录

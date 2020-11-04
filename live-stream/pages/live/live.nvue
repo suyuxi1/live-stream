@@ -7,10 +7,10 @@
 			<!-- 个人信息|观看详细信息 -->
 			<view class="px-2 flex justify-between align-center" style="height: 80rpx;">
 				<view class="flex rounded-circle" style="width: 325rpx; background-color: rgba(0,0,0,0.4);">
-					<view class="p"><image :src=" detail.user.avatar || '../../static/logo.png' " style="width: 70rpx; height: 70rpx;" class="rounded-circle" mode=""></image></view>
+					<view class="p"><image :src="detail.user.avatar || '../../static/logo.png'" style="width: 70rpx; height: 70rpx;" class="rounded-circle" mode=""></image></view>
 					<view class="flex-1 flex flex-column justify-center">
-						<text class="text-white font">{{detail.user.username}}</text>
-						<text class="text-white font-sm">{{detail.user.look_count}}</text>
+						<text class="text-white font">{{ detail.user.username }}</text>
+						<text class="text-white font-sm">{{ detail.user.look_count }}</text>
 					</view>
 					<view class="p">
 						<view class="rounded-circle flex align-center justify-center bg-danger" style="width: 70rpx; height: 70rpx;"><text class="text-white">+</text></view>
@@ -121,6 +121,7 @@ import fDanmu from '../../components/common/f-danmu.vue';
 import uniPopup from '../../components/uni-popup/uni-popup.vue';
 import myGifts from '../../common/gifts.js';
 import $H from '../../common/request.js';
+import { mapState } from 'vuex';
 export default {
 	components: {
 		fGift,
@@ -191,9 +192,12 @@ export default {
 		// }
 		// this.url = e.url;
 	},
-	computed:{
-		src(){
-			if(this.detail.key == '' || this.sign == ''){
+	computed: {
+		...mapState({
+			user: state => state.user
+		}),
+		src() {
+			if (this.detail.key == '' || this.sign == '') {
 				return '';
 			}
 			return `http://suyuxi1.utools.club/live/${this.detail.key}.flv?sign=${this.sign}`;
@@ -206,7 +210,10 @@ export default {
 			});
 		},
 		openGift() {
-			this.$refs.giftPopup.open();
+			//发送礼物登录拦截
+			this.$store.dispatch('authMethod', () => {
+				this.$refs.giftPopup.open();
+			});
 		},
 		closeGift() {
 			this.$refs.giftPopup.close();
@@ -224,8 +231,8 @@ export default {
 			}
 			let g = this.gifts[index];
 			this.$refs.gift.send({
-				username: 'susu',
-				avatar: '',
+				username: this.user.username,
+				avatar: this.user.avatar,
 				gift_name: g.name,
 				gift_image: g.image,
 				num: 10
@@ -250,7 +257,7 @@ export default {
 			}
 			this.$refs.danmu.send({
 				id: Math.random() * 100, //生成随机id
-				name: 'su',
+				name: this.user.username,
 				content: this.content
 			});
 			this.content = '';
