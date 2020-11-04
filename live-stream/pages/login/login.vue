@@ -69,13 +69,16 @@ export default {
 	data() {
 		return {
 			loginType: '手机',
-			phone: '',
-			code: '',
+
 			//获取验证码
 			codeBtn: {
 				text: '获取验证码',
 				seconds: 10,
 				disabled: false
+			},
+			phoneLogin: {
+				phone: 13457513856,
+				code: ''
 			},
 			from: {
 				username: 'sususu',
@@ -87,18 +90,18 @@ export default {
 	computed: {
 		changeAccount: {
 			get() {
-				return this.loginType === '手机' ? this.phone : this.from.username;
+				return this.loginType === '手机' ? this.phoneLogin.phone : this.from.username;
 			},
 			set(val) {
-				this.loginType === '手机' ? (this.phone = val) : (this.from.username = val);
+				this.loginType === '手机' ? (this.phoneLogin.phone = val) : (this.from.username = val);
 			}
 		},
 		changeVerify: {
 			get() {
-				return this.loginType === '手机' ? this.code : this.from.password;
+				return this.loginType === '手机' ? this.phoneLogin.code : this.from.password;
 			},
 			set(val) {
-				this.loginType === '手机' ? (this.code = val) : (this.from.password = val);
+				this.loginType === '手机' ? (this.phoneLogin.code = val) : (this.from.password = val);
 			}
 		}
 	},
@@ -107,10 +110,16 @@ export default {
 		//login登录
 		login() {
 			if (this.loginType === '手机') {
-				console.log(this.phone);
-				uni.showToast({
-					title: '验证码已发送',
-					icon: 'none'
+				console.log(this.phoneLogin.phone);
+				this.$H.post('/phoneLogin', this.phoneLogin).then(res => {
+					uni.showToast({
+						title: '登录成功',
+						icon: 'none'
+					});
+					this.$store.dispatch('login', res);
+					uni.navigateBack({
+						delta: 1
+					});
 				});
 			} else {
 				console.log(this.from);
@@ -130,8 +139,10 @@ export default {
 		changeLoginType() {
 			this.loginType = this.loginType === '手机' ? '账密' : '手机';
 		},
-		//倒计时
+		//获取验证码，倒计时
 		sendCode() {
+			//调用获取验证码方法
+			this.getcode();
 			// this.codeBtn.waitingCode = true;
 			this.codeBtn.disabled = true;
 			this.codeBtn.text = this.codeBtn.seconds + 'S后重新发送';
@@ -145,6 +156,17 @@ export default {
 					this.codeBtn.text = '重新发送';
 				}
 			}, 1000);
+		},
+		// 调用获取验证码接口
+		async getcode() {
+			// console.log(this.phoneLogin.phone);
+			this.$H.post('/sendcode', this.phoneLogin).then(res => {
+				uni.showToast({
+					title: '已发送',
+					icon: 'none'
+				});
+			});
+			// console.log(res.data);
 		},
 		//返回上一层页面
 		goback() {
