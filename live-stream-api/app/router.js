@@ -8,8 +8,8 @@ module.exports = (app) => {
   router.get('/', controller.home.index)
   //socket路由配置测试
   // io.of('/').route('test', io.controller.nsp.test)
-
   io.of('/').route('joinLive', io.controller.nsp.joinLive)
+  io.of('/').route('leaveLive', io.controller.nsp.leaveLive)
 
   //手机验证码登录
   router.post('/api/phoneLogin', controller.api.user.phoneLogin)

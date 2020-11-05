@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 
-//引入封装的请求库并挂载在vue原型上，使用时候：this.SH
+//引入封装的请求库并挂载在vue原型上，使用时候：this.$H
 //Vue.prototype.$appName = 'My App', 这样各个Vue实例就可以通过$appName的方式应用
 //这样做不会引起污染全局作用域
 import $H from 'common/request.js';

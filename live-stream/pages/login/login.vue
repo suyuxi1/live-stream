@@ -68,7 +68,7 @@
 export default {
 	data() {
 		return {
-			loginType: '手机',
+			loginType: '账密',
 
 			//获取验证码
 			codeBtn: {

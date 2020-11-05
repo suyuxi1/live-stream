@@ -12,7 +12,7 @@ export default new Vuex.Store({
 		test: 111,
 		user: null,
 		token: null,
-		socket: null
+		socket: null,
 	},
 	actions: {
 		//连接socket
@@ -45,6 +45,9 @@ export default new Vuex.Store({
 					let d = e.data
 					if (d.action === 'error') {
 						let msg = d.payload
+						// if (e.meta.notoast) {
+						// 	return
+						// }
 						return uni.showToast({
 							title: msg,
 							icon: 'none'
@@ -54,12 +57,22 @@ export default new Vuex.Store({
 				//监听在线用户信息
 				S.on('online', onlineEvent)
 			})
+			//移除监听事件
+			const removeListener = () => {
+				if (S) {
+					S.removeListener('online', onlineEvent)
+				}
+			}
 			//监听失败
 			S.on('error', () => {
-				console.log('连接失败')
+				removeListener()
+				state.socket = null
+				console.log('socket连接失败')
 			})
 			//监听离开
 			S.on('disconnect', () => {
+				removeListener()
+				state.socket = null
 				console.log('已断开')
 			})
 		},
