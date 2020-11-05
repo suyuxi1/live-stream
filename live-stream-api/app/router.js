@@ -10,6 +10,7 @@ module.exports = (app) => {
   // io.of('/').route('test', io.controller.nsp.test)
   io.of('/').route('joinLive', io.controller.nsp.joinLive)
   io.of('/').route('leaveLive', io.controller.nsp.leaveLive)
+  io.of('/').route('comment', io.controller.nsp.comment)
 
   //手机验证码登录
   router.post('/api/phoneLogin', controller.api.user.phoneLogin)
