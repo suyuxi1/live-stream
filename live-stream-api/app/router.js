@@ -13,9 +13,9 @@ module.exports = (app) => {
   router.post('/admin/manager', controller.admin.manager.save)
   //管理员列表
   router.get('/admin/manager', controller.admin.manager.index)
+  //删除管理员
+  router.get('/admin/manager/delete/:id', controller.admin.manager.delete)
 
-
-  
   //socket路由配置测试
   // io.of('/').route('test', io.controller.nsp.test)
   io.of('/').route('joinLive', io.controller.nsp.joinLive)
