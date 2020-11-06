@@ -7,9 +7,10 @@ module.exports = (app) => {
   const { router, controller, io } = app
   router.get('/', controller.home.index)
 
-  //管理员
-  router.get('/test',controller.admin.test.page);
-
+  router.get('/test', controller.admin.test.page)
+  //新增管理员
+  router.get('/admin/manager/create', controller.admin.manager.create)
+  router.post('/admin/manager', controller.admin.manager.save)
 
   //socket路由配置测试
   // io.of('/').route('test', io.controller.nsp.test)
