@@ -22,6 +22,8 @@ module.exports = (app) => {
   router.post('/api/reg', controller.api.user.reg)
   // 用户登录
   router.post('/api/login', controller.api.user.login)
+  // 第三方登录
+  router.post('/api/otherlogin', controller.api.user.otherLogin)
   // 用户退出登录
   router.post('/api/logout', controller.api.user.logout)
   // 获取当前用户信息

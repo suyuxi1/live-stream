@@ -53,9 +53,14 @@
 
 		<!-- 第三方登录 -->
 		<view class="flex align-center justify-center " style="width: 750rpx; height: 120rpx;">
-			<image src="../../static/login/wx.png" style="width: 100rpx; height: 100rpx;" class="rounded-circle px-5" mode=""></image>
-			<image src="../../static/login/qq.png" style="width: 100rpx; height: 100rpx;" class="rounded-circle px-5" mode=""></image>
-			<image src="../../static/login/wb.png" style="width: 100rpx; height: 100rpx;" class="rounded-circle px-5" mode=""></image>
+			<image
+				v-for="(item, index) in otherLoginList"
+				:key="index"
+				style="width: 100rpx; height: 100rpx;"
+				class="rounded-circle px-5"
+				:src="item.image"
+				@click="otherLogin(item)"
+			></image>
 		</view>
 		<view class="flex align-center justify-center my-5">
 			<text class="text-light-muted">注册代表您同意</text>
@@ -69,7 +74,24 @@ export default {
 	data() {
 		return {
 			loginType: '账密',
-
+			/* 第三方登录 */
+			otherLoginList: [
+				{
+					type: 'weixin',
+					openId: 'wxid',
+					image: '../../static/login/wx.png'
+				},
+				{
+					type: 'qq',
+					openId: 'qqid',
+					image: '../../static/login/qq.png'
+				},
+				{
+					type: 'sinaweibo',
+					openId: 'wbid',
+					image: '../../static/login/wb.png'
+				}
+			],
 			//获取验证码
 			codeBtn: {
 				text: '获取验证码',
@@ -107,8 +129,76 @@ export default {
 	},
 
 	methods: {
-		//login登录
-		login() {
+		/**
+		 * 第三方登录
+		 * @param {Object} item
+		 */
+		otherLogin(item) {
+			// 不同第三方登录，只需要更改 provider 的值即可
+			console.log('第三方登录的类型是》》》》》》》》》》》》》');
+			console.log(item);
+			uni.login({
+				provider: item.type,
+				success: loginRes => {
+					uni.getUserInfo({
+						provider: item.type,
+						success: infoRes => {
+							// 统一的登录请求参数
+							console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>请求得到的数据：');
+							console.log(infoRes);
+							let user = {
+								[item.openId]: infoRes.userInfo.openId,
+								username: infoRes.userInfo.nickName,
+								avatar: infoRes.userInfo.avatarUrl
+							};
+							console.log(user);
+							// 统一调用登录方法
+							this.userLogin(user);
+							item: null;
+						},
+						fail() {
+							console.log('请求失败');
+						}
+					});
+				}
+			});
+		},
+		/**
+		 * 统一登录的方法
+		 * @param {Object} loginDTO
+		 */
+		async userLogin(user) {
+			uni.showLoading({
+				title: '登录中'
+			});
+			/**
+			 * 此处调用第三方登录接口
+			 */
+			this.$H.post('/otherlogin', user).then(res => {
+				if (res.id) {
+					this.$store.dispatch('login', res);
+					uni.showToast({
+						title: '登录成功'
+					});
+					setTimeout(() => {
+						uni.switchTab({
+							url: '../index/index'
+						});
+						uni.hideLoading();
+					}, 2000);
+				} else {
+					uni.showToast({
+						title: '登录失败'
+					});
+				}
+				console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>接口返回得到的数据：');
+				console.log(res);
+			});
+		},
+
+		//手机号或账密login登录
+		login(user) {
+			//手机号登录
 			if (this.loginType === '手机') {
 				console.log(this.phoneLogin.phone);
 				this.$H.post('/phoneLogin', this.phoneLogin).then(res => {
@@ -122,6 +212,7 @@ export default {
 					});
 				});
 			} else {
+				//账密登录
 				console.log(this.from);
 				this.$H.post('/login', this.from).then(res => {
 					uni.showToast({

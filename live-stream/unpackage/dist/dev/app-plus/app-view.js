@@ -3922,37 +3922,33 @@ var render = function() {
           staticStyle: { width: "750rpx", height: "120rpx" },
           attrs: { _i: 22 }
         },
-        [
-          _c("v-uni-image", {
-            staticClass: _vm._$g(23, "sc"),
+        _vm._l(_vm._$g(23, "f"), function(item, index, $20, $30) {
+          return _c("v-uni-image", {
+            key: item,
+            staticClass: _vm._$g("23-" + $30, "sc"),
             staticStyle: { width: "100rpx", height: "100rpx" },
-            attrs: { src: _vm._$g(23, "a-src"), mode: "", _i: 23 }
-          }),
-          _c("v-uni-image", {
-            staticClass: _vm._$g(24, "sc"),
-            staticStyle: { width: "100rpx", height: "100rpx" },
-            attrs: { src: _vm._$g(24, "a-src"), mode: "", _i: 24 }
-          }),
-          _c("v-uni-image", {
-            staticClass: _vm._$g(25, "sc"),
-            staticStyle: { width: "100rpx", height: "100rpx" },
-            attrs: { src: _vm._$g(25, "a-src"), mode: "", _i: 25 }
+            attrs: { src: _vm._$g("23-" + $30, "a-src"), _i: "23-" + $30 },
+            on: {
+              click: function($event) {
+                return _vm.$handleViewEvent($event)
+              }
+            }
           })
-        ],
+        }),
         1
       ),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(26, "sc"), attrs: { _i: 26 } },
+        { staticClass: _vm._$g(24, "sc"), attrs: { _i: 24 } },
         [
           _c(
             "v-uni-text",
-            { staticClass: _vm._$g(27, "sc"), attrs: { _i: 27 } },
+            { staticClass: _vm._$g(25, "sc"), attrs: { _i: 25 } },
             [_vm._v("注册代表您同意")]
           ),
           _c(
             "v-uni-text",
-            { staticClass: _vm._$g(28, "sc"), attrs: { _i: 28 } },
+            { staticClass: _vm._$g(26, "sc"), attrs: { _i: 26 } },
             [_vm._v("《XXX社区协议》")]
           )
         ],

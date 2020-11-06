@@ -6,6 +6,106 @@ const Controller = require('egg').Controller
 
 class UserController extends Controller {
 
+  /**
+     * 第三方登录
+     */
+    async otherLogin() {
+      //获取上下文
+      let { ctx, app } = this
+      //验证数据
+      ctx.validate({
+          username: {
+              type: 'string',
+              required: true,
+              range: {
+                  min: 3,
+                  max: 20,
+              },
+              desc: '用户名',
+          },
+          password: {
+              type: 'string',
+              // 默认密码 123456
+              defValue: '123456',
+              required: false,
+              desc: '密码',
+          },
+          avatar: {
+              type: 'string',
+              required: true,
+              desc: '头像',
+          },
+          wxid: {
+              type: 'string',
+              required: false,
+              defValue: '',
+              desc: '微信openId',
+          },
+          qqid: {
+              type: 'string',
+              required: false,
+              defValue: '',
+              desc: 'QQopenId',
+          },
+          wbid: {
+              type: 'string',
+              required: false,
+              defValue: '',
+              desc: '微博openId',
+          },
+      })
+
+      let { username, password, avatar, wxid, qqid, wbid } = ctx.request.body
+      let user = {}
+      // 验证用户是否已经存在
+      if (!wxid) {
+          user = await app.model.User.findOne({
+              where: {
+                  wxid,
+              },
+          })
+      }
+      if (!qqid) {
+          user = await app.model.User.findOne({
+              where: {
+                  qqid,
+              },
+          })
+      }
+      if (!wbid) {
+          user = await app.model.User.findOne({
+              where: {
+                  wbid,
+              },
+          })
+      }
+      console.log(JSON.stringify(user))
+      if (!user) {
+          user = await app.model.User.create({
+              username,
+              password,
+              avatar,
+              wxid,
+              qqid,
+              wbid,
+          })
+          if (!user) {
+              ctx.throw(400, '创建用户失败')
+          }
+      }
+      user = JSON.parse(JSON.stringify(user))
+      console.log(user)
+      // 生成token
+      user.token = ctx.getToken(user)
+      delete user.password
+
+      // 加入到存储中
+      if (!(await this.service.cache.set('user_' + user.id, user.token))) {
+          ctx.throw(400, '登录失败')
+      }
+      ctx.apiSuccess(user)
+  }
+
   // 手机短信登录
   async phoneLogin() {
     const { ctx, app, service } = this
@@ -37,13 +137,13 @@ class UserController extends Controller {
     }
     // 如果查不到，直接注册写入新数据
     if (!user) {
-      // user = await app.model.User.create({
-      //   phone: phone,
-      //   password: '123123',
-      //   avatar: '',
-      //   coin: 0,
-      // })
-      ctx.throw(400, '该用户不存在')
+      user = await app.model.User.create({
+        phone: phone,
+        password: '123123',
+        avatar: '',
+        coin: 0,
+      })
+      // ctx.throw(400, '该用户不存在')
     }
     user = JSON.parse(JSON.stringify(user))
     console.log(user)

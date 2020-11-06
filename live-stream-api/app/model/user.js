@@ -16,6 +16,20 @@ module.exports = (app) => {
       comment: '微信openId',
       unique: true,
     },
+    qqid: {
+      type: STRING(255),
+      allowNull: true,
+      defaultValue: '',
+      comment: 'QQopenId',
+      unique: true,
+    },
+    wbid: {
+      type: STRING(255),
+      allowNull: true,
+      defaultValue: '',
+      comment: '微博openId',
+      unique: true,
+    },
     phone: {
       type: STRING(11),
       allowNull: true,

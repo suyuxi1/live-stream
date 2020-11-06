@@ -292,22 +292,18 @@ export default {
 			this.$refs.giftPopup.close();
 		},
 		sendGift() {
-			console.log('进入发礼物1');
 			if (this.giftActiveId === 0) {
 				return uni.showToast({
 					title: '请选择要发送的礼物',
 					icon: 'none'
 				});
 			}
-			console.log('进入发礼物2');
 			let index = this.gifts.findIndex(item => item.id === this.giftActiveId);
 			if (index === -1) {
 				return;
 			}
 			let g = this.gifts[index];
-			console.log('进入发礼物3');
 			if (!this.token && !this.socket) {
-				console.log('进入发礼物4');
 				uni.navigateTo({
 					url: '../login/login'
 				});
