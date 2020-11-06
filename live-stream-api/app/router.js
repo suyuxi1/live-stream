@@ -6,6 +6,11 @@
 module.exports = (app) => {
   const { router, controller, io } = app
   router.get('/', controller.home.index)
+
+  //管理员
+  router.get('/test',controller.admin.test.page);
+
+
   //socket路由配置测试
   // io.of('/').route('test', io.controller.nsp.test)
   io.of('/').route('joinLive', io.controller.nsp.joinLive)
