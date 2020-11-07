@@ -130,4 +130,31 @@ module.exports = {
     this.locals.pageRender = pageRender
     return res.rows
   },
+  randomString(length) {
+    const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    var result = ''
+    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)]
+    return result
+  },
+  // 渲染公共模板
+  async renderTemplate(params = {}) {
+    let toast = this.cookies.get('toast', {
+      encrypt: true,
+    })
+    params.toast = toast ? JSON.parse(toast) : null
+    return await this.render('admin/common/template.html', params)
+  },
+  toast(msg, type = 'danger') {
+    this.cookies.set(
+      'toast',
+      JSON.stringify({
+        msg,
+        type,
+      }),
+      {
+        maxAge: 1500,
+        encrypt: true,
+      }
+    )
+  },
 }
