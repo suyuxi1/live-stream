@@ -25,6 +25,21 @@ module.exports = (app) => {
   //新增管理员接口
   router.post('/admin/manager', controller.admin.manager.save)
 
+  //上传文件接口
+  router.post('/admin/upload', controller.admin.common.upload)
+  //用户模块（列表）路由
+  router.get('/admin/user', controller.admin.user.index)
+  //新增用户路由
+  router.get('/admin/user/create', controller.admin.user.create)
+  //新增用户接口
+  router.post('/admin/user', controller.admin.user.save)
+  //编辑用户路由
+  router.get('/admin/user/edit/:id', controller.admin.user.edit)
+  //删除用户路由
+  router.get('/admin/user/delete/:id', controller.admin.user.delete)
+  //更新用户数据接口
+  router.post('/admin/user/:id', controller.admin.user.update)
+
   //socket路由配置测试
   // io.of('/').route('test', io.controller.nsp.test)
   io.of('/').route('joinLive', io.controller.nsp.joinLive)
