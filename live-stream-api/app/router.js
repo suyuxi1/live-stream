@@ -24,6 +24,8 @@ module.exports = (app) => {
   router.get('/admin/manager/create', controller.admin.manager.create)
   //新增管理员接口
   router.post('/admin/manager', controller.admin.manager.save)
+  // 删除管理员
+  // router.get('/admin/manager/delete/:id', controller.admin.manager.delete)
 
   //上传文件接口
   router.post('/admin/upload', controller.admin.common.upload)
@@ -52,6 +54,19 @@ module.exports = (app) => {
   router.get('/admin/gift/delete/:id', controller.admin.gift.delete)
   //更新礼物数据接口
   router.post('/admin/gift/:id', controller.admin.gift.update)
+
+  // 直播间模块（列表）路由
+  router.get('/admin/live', controller.admin.live.index)
+  // 查看指定直播间路由
+  router.get('/admin/live/look/:id', controller.admin.live.look)
+  // 查看直播间礼物路由
+  router.get('/admin/live/gift/:id', controller.admin.live.gift)
+  // 查看直播间弹幕路由
+  router.get('/admin/live/comment/:id', controller.admin.live.comment)
+  // 查看已结束的直播间
+  router.get('/admin/live/close/:id', controller.admin.live.closelive)
+  // 删除直播间
+  router.get('/admin/live/delete/:id', controller.admin.live.delete)
 
   //socket路由配置测试
   // io.of('/').route('test', io.controller.nsp.test)
