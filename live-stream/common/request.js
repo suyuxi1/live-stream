@@ -1,4 +1,5 @@
-export default {
+import $C from './config.js'
+export default {	
 	// 全局配置
 	common: {
 		// #ifndef H5
@@ -9,6 +10,8 @@ export default {
 		// #ifdef H5
 		// baseUrl: "/api",
 		// #endif
+		
+		baseUrl:$C.baseUrl + "/api",
 		header: {
 			'Content-Type': 'application/json;charset=UTF-8',
 		},

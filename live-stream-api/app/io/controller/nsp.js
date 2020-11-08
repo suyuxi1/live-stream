@@ -243,7 +243,7 @@ class NspController extends Controller {
     //验证当前直播间是否存在或是否直播中
     let msg = await service.live.checkStatus(live_id)
     if (msg) {
-      socket.emit(id, ctx, helper.parseMsg('error', msg))
+      socket.emit(id, ctx.helper.parseMsg('error', msg))
       return
     }
     const room = 'live_' + live_id

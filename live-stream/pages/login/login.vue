@@ -15,7 +15,7 @@
 					class="font text-white"
 					:placeholder="loginType === '手机' ? '请输入手机号' : '昵称/手机/邮箱'"
 					placeholder-style="color: #ffffff;"
-					style="height: 100rpx;"
+					style="height: 100rpx; width: 750rpx;"
 					value=""
 				/>
 			</view>
@@ -26,7 +26,7 @@
 					class="font text-white"
 					:placeholder="loginType === '手机' ? '请输入验证码' : '请输入密码'"
 					placeholder-style="color: #ffffff;"
-					style="height: 100rpx;"
+					style="height: 100rpx; width: 500rpx;"
 					value=""
 				/>
 				<button v-if="loginType === '手机'" plain :disabled="this.codeBtn.disabled" class="mr-0" style="border: none ;color: #eaeaea; font-size: 30rpx;" @tap="sendCode">
