@@ -26,7 +26,7 @@
 					class="font text-white"
 					:placeholder="loginType === '手机' ? '请输入验证码' : '请输入密码'"
 					placeholder-style="color: #ffffff;"
-					style="height: 100rpx; width: 500rpx;"
+					style="height: 100rpx; width: 400rpx;"
 					value=""
 				/>
 				<button v-if="loginType === '手机'" plain :disabled="this.codeBtn.disabled" class="mr-0" style="border: none ;color: #eaeaea; font-size: 30rpx;" @tap="sendCode">
@@ -52,12 +52,12 @@
 		<view class="flex align-center justify-center my-5"><text class="text-light-muted">————社交账号登录————</text></view>
 
 		<!-- 第三方登录 -->
-		<view class="flex align-center justify-center " style="width: 750rpx; height: 120rpx;">
+		<view class="flex align-center justify-center content-around" style="width: 750rpx; height: 120rpx;">
 			<image
 				v-for="(item, index) in otherLoginList"
 				:key="index"
-				style="width: 100rpx; height: 100rpx;"
-				class="rounded-circle px-5"
+				style="width: 100rpx; height: 100rpx; background-color: #FFFFFF; "
+				class="rounded-circle mx-5"
 				:src="item.image"
 				@click="otherLogin(item)"
 			></image>
@@ -95,11 +95,11 @@ export default {
 			//获取验证码
 			codeBtn: {
 				text: '获取验证码',
-				seconds: 10,
+				seconds: 60,
 				disabled: false
 			},
 			phoneLogin: {
-				phone: 13457513856,
+				phone: '',
 				code: ''
 			},
 			from: {
@@ -137,6 +137,12 @@ export default {
 			// 不同第三方登录，只需要更改 provider 的值即可
 			console.log('第三方登录的类型是》》》》》》》》》》》》》');
 			console.log(item);
+			if (item.type === 'sinaweibo') {
+				return uni.showToast({
+					title: '功能未开放',
+					icon: 'none'
+				});
+			}
 			uni.login({
 				provider: item.type,
 				success: loginRes => {
@@ -154,7 +160,6 @@ export default {
 							console.log(user);
 							// 统一调用登录方法
 							this.userLogin(user);
-							item: null;
 						},
 						fail() {
 							console.log('请求失败');
@@ -197,7 +202,7 @@ export default {
 		},
 
 		//手机号或账密login登录
-		login(user) {
+		login() {
 			//手机号登录
 			if (this.loginType === '手机') {
 				console.log(this.phoneLogin.phone);
@@ -232,6 +237,13 @@ export default {
 		},
 		//获取验证码，倒计时
 		sendCode() {
+			console.log(this.phoneLogin.phone);
+			if (this.phoneLogin.phone === '') {
+				return uni.showToast({
+					title: '请输入正确的手机号',
+					icon: 'none'
+				});
+			}
 			//调用获取验证码方法
 			this.getcode();
 			// this.codeBtn.waitingCode = true;

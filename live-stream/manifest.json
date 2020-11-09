@@ -30,7 +30,12 @@
             "delay" : 0
         },
         /* 模块配置 */
-        "modules" : {},
+        "modules" : {
+            "LivePusher" : {},
+            "Payment" : {},
+            "VideoPlayer" : {},
+            "OAuth" : {}
+        },
         /* 应用发布信息 */
         "distribute" : {
             /* android打包配置 */
@@ -64,7 +69,19 @@
             "ios" : {},
             /* SDK配置 */
             "sdkConfigs" : {
-                "ad" : {}
+                "ad" : {},
+                "payment" : {
+                    "weixin" : {
+                        "__platform__" : [ "ios", "android" ],
+                        "appid" : "wx67c2fdffcdbcd97b",
+                        "UniversalLinks" : ""
+                    }
+                },
+                "oauth" : {
+                    "qq" : {
+                        "appid" : "1111186256"
+                    }
+                }
             },
             "icons" : {
                 "android" : {
@@ -97,6 +114,14 @@
                         "spotlight@3x" : "unpackage/res/icons/120x120.png"
                     }
                 }
+            },
+            "splashscreen" : {
+                "androidStyle" : "default",
+                "android" : {
+                    "hdpi" : "D:/su/HBuilderProjects/live-stream/data/res/drawable-hdpi/photo_1511300636408_a63a89df3482.9.png",
+                    "xhdpi" : "D:/su/HBuilderProjects/live-stream/data/res/drawable-xhdpi/photo_1511300636408_a63a89df3482.9.png",
+                    "xxhdpi" : "D:/su/HBuilderProjects/live-stream/data/res/drawable-xxhdpi/photo_1511300636408_a63a89df3482.9.png"
+                }
             }
         }
     },
@@ -104,9 +129,10 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wx67c2fdffcdbcd97b",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : false,
+            "postcss" : true
         },
         "usingComponents" : true
     },

@@ -5,6 +5,17 @@ const await = require('await-stream-ready/lib/await')
 const Service = require('egg').Service
 
 class UserService extends Service {
+//根据手机号查找用户是否存在
+async existByPhone(phone) {
+  const { app } = this
+
+  return await app.model.User.findOne({
+    where: {
+      phone,
+    },
+  })
+}
+
   //用户是否存在
   async exist(id) {
     const { app } = this
@@ -15,6 +26,7 @@ class UserService extends Service {
       },
     })
   }
+
   // 指定用户关注人数
   async getFollowCount(user_id) {
     return await this.app.model.Follow.count({

@@ -57,7 +57,7 @@
 				<view class="btn btn-icon"><text class="iconfont text-white" style="font-size: 40rpx;">&#xe633;</text></view>
 				<view class="btn btn-icon bg-warning" @click="openGift"><text class="iconfont text-light">&#xe67c;</text></view>
 				<view class="btn btn-icon"><text class="iconfont text-white">&#xe7cd;</text></view>
-				<view class="btn btn-icon"><text class="iconfont text-white" @click="goback">&#xe607;</text></view>
+				<view class="btn btn-icon" @click="goback"><text class="iconfont text-white">&#xe607;</text></view>
 			</view>
 		</view>
 

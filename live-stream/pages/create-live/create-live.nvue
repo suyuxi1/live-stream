@@ -22,12 +22,8 @@
 		<view style="position: fixed; left: 0; right: 0;height: 500rpx;" :style="'top:' + statusBarHeight + 'px;'">
 			<view class="flex align-center justify-center" style="width: 90rpx; height: 90rpx;" @click="back(e)"><text class="iconfont text-white">&#xe607;</text></view>
 
-			<view
-				class="position-absolute rounded px-2 flex align-center"
-				style="left: 90rpx; right: 100rpx; height: 160rpx; background-color: rgba(0,0,0,0.2);"
-				@click="chooseCover"
-			>
-				<view class="position-relative rounded" style="height: 130rpx; width: 130rpx;">
+			<view class="position-absolute rounded px-2 flex align-center" style="left: 90rpx; right: 100rpx; height: 160rpx; background-color: rgba(0,0,0,0.2);">
+				<view class="position-relative rounded" style="height: 130rpx; width: 130rpx;" @click="chooseCover">
 					<image
 						:src="form.cover || 'http://pic.netbian.com/uploads/allimg/181117/221319-1542463999f0fd.jpg'"
 						style="height: 120rpx; width: 120rpx;"
@@ -181,16 +177,11 @@ export default {
 			uni.chooseImage({
 				count: 1,
 				success: res => {
-					$H.upload(
-						'/upload',
-						{
-							filePath: res.tempFilePaths[0]
-						},
-						p => {
-							console.log(p);
-						}
-					).then(res => {
-						this.form.cover = $C.imageUrL + res.url;
+					$H.upload('/upload', {
+						filePath: res.tempFilePaths[0]
+					}).then(res => {
+						console.log(res.url);
+						this.form.cover = $C.imageUrl + res.url;
 					});
 				}
 			});

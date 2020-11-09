@@ -3788,7 +3788,7 @@ var render = function() {
             [
               _c("v-uni-input", {
                 staticClass: _vm._$g(10, "sc"),
-                staticStyle: { height: "100rpx", width: "500rpx" },
+                staticStyle: { height: "100rpx", width: "400rpx" },
                 attrs: {
                   type: _vm._$g(10, "a-type"),
                   placeholder: _vm._$g(10, "a-placeholder"),
@@ -3926,7 +3926,11 @@ var render = function() {
           return _c("v-uni-image", {
             key: item,
             staticClass: _vm._$g("23-" + $30, "sc"),
-            staticStyle: { width: "100rpx", height: "100rpx" },
+            staticStyle: {
+              width: "100rpx",
+              height: "100rpx",
+              "background-color": "#FFFFFF"
+            },
             attrs: { src: _vm._$g("23-" + $30, "a-src"), _i: "23-" + $30 },
             on: {
               click: function($event) {
@@ -4046,7 +4050,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../../study/HBuilder X/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 16);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.container {\r\n\twidth: 750rpx;\r\n\t/* height: 100%; */\r\n\theight: 100vh;\r\n\tmargin: 0;\r\n\tpadding: 100rpx 0 0 0;\r\n\tbackground-size: cover;\r\n\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(#ba7ace), to(#8745ff));\r\n\tbackground-image: -webkit-linear-gradient(top, #ba7ace 0%, #8745ff 100%);\r\n\tbackground-image: linear-gradient(to bottom, #ba7ace 0%, #8745ff 100%);\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n\twidth: 750rpx;\n\t/* height: 100%; */\n\theight: 100vh;\n\tmargin: 0;\n\tpadding: 100rpx 0 0 0;\n\tbackground-size: cover;\n\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(#ba7ace), to(#8745ff));\n\tbackground-image: -webkit-linear-gradient(top, #ba7ace 0%, #8745ff 100%);\n\tbackground-image: linear-gradient(to bottom, #ba7ace 0%, #8745ff 100%);\n}\n", ""]);
 // Exports
 module.exports = exports;
 

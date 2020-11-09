@@ -139,9 +139,9 @@ class UserController extends Controller {
     if (!user) {
       user = await app.model.User.create({
         phone: phone,
-        password: '123123',
-        avatar: '',
-        coin: 0,
+        password: '123456',
+        avatar: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2975996532,2425031589&fm=26&gp=0.jpg',
+        coin: 100,
       })
       // ctx.throw(400, '该用户不存在')
     }
@@ -228,14 +228,16 @@ class UserController extends Controller {
         desc: '密码',
       },
     })
+    
 
     let { username, password } = ctx.request.body
-
+    // let user = await this.app.model.query('select * from user where phone = ? or username = ?', [username, username])
     let user = await app.model.User.findOne({
       where: {
-        username,
+        username : username,
       },
     })
+    
 
     if (!user) {
       ctx.throw(400, '该用户不存在')

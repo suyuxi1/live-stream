@@ -1,5 +1,5 @@
 import $C from './config.js'
-export default {	
+export default {
 	// 全局配置
 	common: {
 		// #ifndef H5
@@ -10,8 +10,8 @@ export default {
 		// #ifdef H5
 		// baseUrl: "/api",
 		// #endif
-		
-		baseUrl:$C.baseUrl + "/api",
+
+		baseUrl: $C.baseUrl + "/api",
 		header: {
 			'Content-Type': 'application/json;charset=UTF-8',
 		},
@@ -19,6 +19,48 @@ export default {
 		method: 'GET',
 		dataType: 'json',
 		token: false
+	},
+
+	upload(url, data) {
+		return new Promise((result, reject) => {
+			// 上传
+			let token = uni.getStorageSync('token')
+			if (!token) {
+				uni.showToast({
+					title: '请先登录',
+					icon: 'none'
+				});
+				// token不存在时跳转
+				return uni.reLaunch({
+					url: '/pages/login/login',
+				});
+			}
+
+			const uploadTask = uni.uploadFile({
+				url: this.common.baseUrl + url,
+				filePath: data.filePath,
+				name: data.name || "files",
+				header: {
+					token
+				},
+				formData: data.formData || {},
+				success: (res) => {
+					if (res.statusCode !== 200) {
+						result(false)
+						return uni.showToast({
+							title: '上传失败',
+							icon: 'none'
+						});
+					}
+					let message = JSON.parse(res.data)
+					result(message.data);
+				},
+				fail: (err) => {
+					console.log(err);
+					reject(err)
+				}
+			})
+		})
 	},
 	// 请求返回promise
 	request(options = {}) {
