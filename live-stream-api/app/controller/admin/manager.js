@@ -132,6 +132,84 @@ class ManagerController extends Controller {
 
     ctx.redirect('/admin/manager')
   }
+
+  // 编辑管理员
+  async edit() {
+    const { ctx, app } = this
+    const id = ctx.params.id
+    let data = await app.model.Manager.findOne({
+      where: {
+        id,
+      },
+    })
+    if (!data) {
+      return await ctx.pageFail('该记录不存在')
+    }
+    data = JSON.parse(JSON.stringify(data))
+    delete data.password
+
+    await ctx.renderTemplate({
+      id: ctx.params.id,
+      title: '修改管理员',
+      tempType: 'form',
+      form: {
+        // 提交地址
+        action: '/admin/manager/' + ctx.params.id,
+        fields,
+        data,
+      },
+      // 新增成功跳转路径
+      successUrl: '/admin/manager',
+    })
+  }
+  
+  // 更新数据
+  async update() {
+    const { ctx, app } = this
+    ctx.validate({
+      id: {
+        type: 'int',
+        required: true,
+      },
+      username: {
+        type: 'string',
+        required: true,
+      },
+      password: {
+        type: 'string',
+      },
+    })
+    const id = ctx.params.id
+    const { username, password } = ctx.request.body
+    // 用户名是否被使用
+    const Op = app.Sequelize.Op
+    if (
+      await app.model.Manager.findOne({
+        where: {
+          id: {
+            [Op.ne]: id,
+          },
+          username,
+        },
+      })
+    ) {
+      return ctx.apiFail('该用户名已存在')
+    }
+    // 当前管理员是否存在
+    const manager = await app.model.Manager.findOne({
+      where: {
+        id,
+      },
+    })
+    if (!manager) {
+      return ctx.apiFail('该记录不存在')
+    }
+    manager.username = username
+    if (password) {
+      manager.password = password
+    }
+    ctx.apiSuccess(await manager.save())
+  }
 }
 
 module.exports = ManagerController

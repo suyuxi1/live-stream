@@ -256,11 +256,28 @@ var render = function() {
       _c(
         "v-uni-view",
         { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
-        _vm._l(_vm._$g(4, "f"), function(item, index, $20, $30) {
+        [
+          _c(
+            "v-uni-text",
+            { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
+            [_vm._v("直播")]
+          ),
+          _c(
+            "v-uni-text",
+            { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
+            [_vm._v("电视")]
+          )
+        ],
+        1
+      ),
+      _c(
+        "v-uni-view",
+        { staticClass: _vm._$g(6, "sc"), attrs: { _i: 6 } },
+        _vm._l(_vm._$g(7, "f"), function(item, index, $20, $30) {
           return _c("list-item", {
             key: item,
-            staticClass: _vm._$g("4-" + $30, "sc"),
-            attrs: { _i: "4-" + $30 },
+            staticClass: _vm._$g("7-" + $30, "sc"),
+            attrs: { _i: "7-" + $30 },
             on: {
               click: function($event) {
                 return _vm.$handleViewEvent($event)
@@ -270,15 +287,15 @@ var render = function() {
         }),
         1
       ),
-      _c("v-uni-view", { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } }),
+      _c("v-uni-view", { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } }),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(6, "sc"), attrs: { _i: 6 } },
+        { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } },
         [
           _c(
             "v-uni-text",
-            { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
-            [_vm._v(_vm._$g(7, "t0-0"))]
+            { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
+            [_vm._v(_vm._$g(10, "t0-0"))]
           )
         ],
         1
@@ -737,7 +754,7 @@ var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ../../static/logo.pn
 exports = ___CSS_LOADER_API_IMPORT___(false);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-exports.push([module.i, "\n.list-item {\r\n\twidth: 375rpx;\r\n\theight: 375rpx;\r\n\tpadding: 5rpx;\r\n\t-webkit-box-sizing: border-box;\r\n\t        box-sizing: border-box;\r\n\tposition: relative;\n}\n.top {\r\n\twidth: 750rpx;\r\n\theight: 260rpx;\r\n\tbackground-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n\tbackground-size: cover;\r\n\tbackground-image: -webkit-gradient(linear, left top, right top, from(#ba7ace), to(#8745ff));\r\n\tbackground-image: -webkit-linear-gradient(left, #ba7ace 0%, #8745ff 100%);\r\n\tbackground-image: linear-gradient(to right, #ba7ace 0%, #8745ff 100%);\n}\r\n", ""]);
+exports.push([module.i, "\n.list-item {\r\n\twidth: 375rpx;\r\n\theight: 375rpx;\r\n\tpadding: 5rpx;\r\n\t-webkit-box-sizing: border-box;\r\n\t        box-sizing: border-box;\r\n\tposition: relative;\n}\n.top {\r\n\twidth: 750rpx;\r\n\theight: 260rpx;\r\n\tbackground-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n\tbackground-size: cover;\r\n\tbackground-image: -webkit-gradient(linear, left top, right top, from(#ba7ace), to(#8745ff));\r\n\tbackground-image: -webkit-linear-gradient(left, #ba7ace 0%, #8745ff 100%);\r\n\tbackground-image: linear-gradient(to right, #ba7ace 0%, #8745ff 100%);\n}\n.test {\r\n\twidth: 750rpx;\r\n\theight: 100rpx;\r\n\tposition: -webkit-sticky;\r\n\tposition: sticky;\r\n\ttop: 0;\r\n\tz-index: 99;\r\n\t/* \tbackground-image: url(../../static/logo.png);\r\n\tbackground-size: cover;\r\n\tbackground-image: linear-gradient(to right, #ba7ace 0%, #8745ff 100%); */\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 

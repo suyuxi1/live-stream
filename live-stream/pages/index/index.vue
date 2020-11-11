@@ -17,6 +17,10 @@
 				style="width: 600rpx; height: 70rpx; background-color: rgba(0,0,0,0.2);"
 			/>
 		</view>
+		<view class="flex align-center justify-center test bg-secondary">
+			<text class="mx-5">直播</text>
+			<text class="mx-5">电视</text>
+		</view>
 
 		<!-- 列表 -->
 		<view class="flex flex-wrap"><list-item class="list-item p" v-for="(item, index) in list" :key="index" :item="item" @click="openLive(item)"></list-item></view>
@@ -39,15 +43,15 @@ export default {
 	data() {
 		return {
 			list: [
-				// {
-				// 	coin: 10,
-				// 	look_count: 520,
-				// 	title: 'CCTV-3',
-				// 	cover: 'http://pic.netbian.com/uploads/allimg/190824/205524-15666513248366.jpg',
-				// 	url: 'http://suyuxi.utools.club/live/MSuSfJ0Q60fnqfwFKp9m.flv?sign=1604332766-32385776ba7ef343d6ab97b3c50dad43',
-				// 	// url: 'http://ivi.bupt.edu.cn/hls/cctv3hd.m3u8',
-				// 	status: 1
-				// },
+				{
+					// 	coin: 10,
+					// 	look_count: 520,
+					// 	title: 'CCTV-3',
+					// 	cover: 'http://pic.netbian.com/uploads/allimg/190824/205524-15666513248366.jpg',
+					// 	url: 'http://suyuxi.utools.club/live/MSuSfJ0Q60fnqfwFKp9m.flv?sign=1604332766-32385776ba7ef343d6ab97b3c50dad43',
+					// 	// url: 'http://ivi.bupt.edu.cn/hls/cctv3hd.m3u8',
+					// 	status: 1
+				}
 				// {
 				// 	coin: 10,
 				// 	look_count: 530,
@@ -55,7 +59,7 @@ export default {
 				// 	cover: 'http://pic.netbian.com/uploads/allimg/200604/001849-15912011292fcb.jpg',
 				// 	url: 'http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8',
 				// 	status: 0
-				// },
+				// }
 				// {
 				// 	coin: 10,
 				// 	look_count: 540,
@@ -106,7 +110,8 @@ export default {
 				// }
 			],
 			page: 1,
-			loadText: '上拉加载更多'
+			loadText: '上拉加载更多',
+			scroll: 0
 		};
 	},
 	onLoad() {
@@ -134,6 +139,10 @@ export default {
 		this.page++;
 		this.getData();
 	},
+	// onPageScroll(Object) {
+	// 	console.log(Object.scrollTop);
+	// 	this.scroll == Object.scrollTop;
+	// },
 	methods: {
 		getData() {
 			let page = this.page;
@@ -174,5 +183,15 @@ export default {
 	background-image: url(../../static/logo.png);
 	background-size: cover;
 	background-image: linear-gradient(to right, #ba7ace 0%, #8745ff 100%);
+}
+.test {
+	width: 750rpx;
+	height: 100rpx;
+	position: sticky;
+	top: 0;
+	z-index: 99;
+	/* 	background-image: url(../../static/logo.png);
+	background-size: cover;
+	background-image: linear-gradient(to right, #ba7ace 0%, #8745ff 100%); */
 }
 </style>

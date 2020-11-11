@@ -16,6 +16,13 @@ module.exports = {
   getToken(value) {
     return this.app.jwt.sign(value, this.app.config.jwt.secret)
   },
+  // 页面失败提示
+  async pageFail(data = '', code = 404) {
+    return await this.render('admin/common/404.html', {
+      data,
+      code,
+    })
+  },
   // 验证token
   checkToken(token) {
     return this.app.jwt.verify(token, this.app.config.jwt.secret)

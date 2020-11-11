@@ -24,8 +24,12 @@ module.exports = (app) => {
   router.get('/admin/manager/create', controller.admin.manager.create)
   //新增管理员接口
   router.post('/admin/manager', controller.admin.manager.save)
-  // 删除管理员
-  // router.get('/admin/manager/delete/:id', controller.admin.manager.delete)
+  //编辑管理员
+  router.get('/admin/manager/edit/:id', controller.admin.manager.edit)
+  //删除管理员
+  router.get('/admin/manager/delete/:id', controller.admin.manager.delete)
+  //更新管理员接口
+  router.post('/admin/manager/:id', controller.admin.manager.update)
 
   //上传文件接口
   router.post('/admin/upload', controller.admin.common.upload)
@@ -92,7 +96,6 @@ module.exports = (app) => {
   router.get('/api/user/info', controller.api.user.info)
   //上传图片
   router.post('/api/upload', controller.api.common.upload)
-
 
   // 创建直播间
   router.post('/api/live/create', controller.api.live.save)

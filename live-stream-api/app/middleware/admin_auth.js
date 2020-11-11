@@ -6,7 +6,7 @@ module.exports = (option, app) => {
   return async (ctx, next) => {
     if (!ctx.session.auth) {
       ctx.toast('请先登录', 'danger')
-      return ctx.redirect(`/admin/home/login`)
+      return ctx.redirect(`/admin/login`)
     }
     await next()
 

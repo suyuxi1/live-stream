@@ -1,24 +1,24 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
+    "password": "suroot",
     "database": "live_stream_egg",
-    "host": "127.0.0.1",
+    "host": "120.25.149.156",
     "dialect": "mysql",
     "timezone": "+08:00"
   },
   "test": {
     "username": "root",
-    "password": "root",
+    "password": "suroot",
     "database": "database_test",
-    "host": "127.0.0.1",
+    "host": "120.25.149.156",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": null,
+    "password": "suroot",
     "database": "database_production",
-    "host": "127.0.0.1",
+    "host": "120.25.149.156",
     "dialect": "mysql"
   }
 }
